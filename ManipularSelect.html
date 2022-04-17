@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script >
+        function meutarget(e) {
+          
+            var valorescolhido = document.querySelector("#valescolhido");
+            valorescolhido.innerHTML = e.value;
+        }
+
+    </script>
+
+</head>
+<body>
+    <select id="mySelect" value="pineapple" onChange="meutarget(this)">
+        <option value="apple">Apple</option>
+        <option value="orange">Orange</option>
+        <option value="pineapple">Pineapple</option>
+        <option value="banana" >Banana</option>
+    </select>
+    <p> valor: <span id="valescolhido"></span></p>
+</body>
+</html>

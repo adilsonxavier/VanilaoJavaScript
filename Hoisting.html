@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        /*
+        console.log(nome); //Undefined ( mas não dá erro) por que o hosting eleva a declaração var nome pro topo 
+        var nome = "tito"; // mas sua atribuição "tito" não vai junto e este valor só é acessivel depois de atribuido
+
+        console.log(nome2); // O Hosting não funciona com variável declarada com let
+        let nome2 = "maysa";
+        */
+
+        //Function expression - Função atribuida a uma variável
+
+       // somar(5, 9); // somar is not a function
+        //somar(3, 4);
+        //var somar = function (a, b) { console.log(a + b) };
+
+        // Já em function declaration o hosting ocorre sem problema
+       // somar2(3, 4);
+        function somar2(a, b) { console.log(a + b) };
+
+       
+        var somar3 = (a, b) => console.log(a + b);
+        somar3(5, 4);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

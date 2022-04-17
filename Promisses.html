@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+
+        // Relembrando um callBack
+        //------------
+        //function somar(n1, n2, callBack) {
+        //    let resul = n1 + n2;
+        //    callBack(resul);
+        //}
+
+        //somar(10, 20, function (res) { console.log(res) });
+
+       // SEM Promise
+        ////////////////
+        /*
+        function div(n1, n2, sucesso, erro) {
+            let d = n1 / n2;
+            if (n2 != 0) {
+                sucesso(d);
+            } else {
+                erro("impossivel dividir por zero");
+            }
+        }
+
+        function sucessoCallBack(r) {
+            console.log(r);
+        }
+
+        function erroCallBack(e) {
+            console.log(e);
+        }
+
+        div(10, 2, sucessoCallBack, erroCallBack)
+        */
+        //COM Promise
+        //------------
+
+        
+        function div(n1, n2) {
+            return new Promise(function (resolve, reject) {
+                let d = n1 / n2;
+                if (n2 != 0) {
+                    resolve(d);
+
+                } else {
+                    reject("impossivel dividir por zero");
+                }
+            });
+        }
+
+        //function sucessoCallBack(r) {
+        //    console.log("sucesso callback " + r);
+        //}
+
+        //function erroCallBack(e) {
+        //    console.log("erro call back "+ e);
+        //}
+
+
+       //div(10, 2).then(sucessoCallBack).catch(erroCallBack);
+
+        //div(10, 0)
+        //    .then(resp => { console.log("primeiro then " + resp); return resp; }) // sem return o then seguinte teria o resp2 undefined
+        //    .then(resp2 => resp2 + 3) // como é arrow function sem {} fica subentendido que já está sendo retornado resp2+ e pro then seguinte
+        //    .then(resp3 => console.log(resp3))
+
+
+        //    .catch((erro) => console.log("erro foi " + erro));
+
+
+        // resolver várias promessas com all
+        
+        const p1 = new Promise((resolve, reject) => {
+            setTimeout(() => { resolve("p1 ok") }, 2000);
+            
+        });
+        const p2 = new Promise((resolve, reject) => resolve("p2 ok"));
+        const p3 = new Promise((resolve, reject) => resolve("p3 ok"));
+
+        const resolveall = Promise.all([p1, p2, p3]) // Veja que all é um método estático da classe Promise() e recebe um array de Promise()
+            .then(data => { console.log(data); return data; }) // o método all() também retorna um array :Array(3)["p1 ok", "p2 ok", "p3 ok"]
+            .then(data2 => console.log(" só o data2[1] " + data2[1])); // tanto que posso acessar só um item do array
+
+
+        // a linha abaixo vai ser impressa antes do código acima por que uma das promisses(p1) de resolveall tem um delay de 2 segundos
+        // graças a isso todas as promises do resolveall vão ser executadas após 2 segundos e não só a primeira
+        console.log("depois do resolveAll");
+        
+
+        // resolver várias promessas com race
+        const p4 = new Promise((resolve, reject) => {
+           /// resolve("p4 ok");
+            setTimeout(() => { resolve("p4 ok") }, 2000);
+
+        });
+        const p5 = new Promise((resolve, reject) => resolve("p5 ok")); // p5 ganha a corrida de p4 por que ele tem delay
+                                                                       // e também ganha de p6 por que p5 vem antes
+        const p6 = new Promise((resolve, reject) => resolve("p6 ok"));
+
+        const resolveallrace = Promise.race([p4, p5, p6]) // Vai imprimir só p5 por que ele gahou a corrida do método race
+            .then(data => { console.log(data) });
+            
+
+          console.log("depois do resolveAllrace");
+        
+        ////////////////
+     
+    </script>
+</head>
+<body>
+    <h1 id="demo"></h1>
+    <script>
+
+       
+        //function myDisplayer(some) {
+        //    document.getElementById("demo").innerHTML = some;
+        //}
+
+        //function myFunction() {
+        //    return Promise.reject("Hello totp");
+        //}
+
+        //myFunction().then(
+        //    function (value) { myDisplayer(value) /* code if successful */ },
+        //    function (error) { myDisplayer("erro foi" + error)/* code if some error */ }
+        //);
+
+
+        //let myPromise = (argumento) => {
+        //    return new Promise(function (myResolve, myReject) {
+        //        let x = 0;
+
+        //        // The producing code (this may take some time)
+
+        //        if (x == 0) {
+        //            myResolve("OK " + argumento);
+        //        } else {
+        //            myReject("Error " + argumento);
+        //        }
+        //    });
+        //}
+
+        //myPromise("lalala").then(
+        //    function (value) { myDisplayer(value); },
+        //    function (error) { myDisplayer(error); }
+        //);
+        
+
+        /*
+        async function myFunction() {
+            return "Hello";
+        }
+        myFunction().then(
+            function (value) { myDisplayer(value); },
+            function (error) { myDisplayer(error); }
+        );
+        */
+    </script>
+</body>
+
+</html>

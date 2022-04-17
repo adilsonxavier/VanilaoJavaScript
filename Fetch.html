@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        // O fetch retorna uma promise então se usa a função extendida then para acessar seu retorno 
+        fetch("https://api.giphy.com/v1/gifs/search?api_key=35ayH4LHRvr8UaoogK7ACiAZY7HlNyw3&q=spiderman&limit=7")
+            // O retorno é um objeto do tipo Response da Fetch API que tem as propriedades básicas como 
+            // status, body, etc e também métodos
+
+            //.then((minharesponse) => console.log(minharesponse));
+            // o then abaixo ainda retorna um promise com 2 propriedades: state : fulfilled ( completada)
+            // e value : um object com o json dentro
+
+            .then((minharesponse) => minharesponse.json())
+
+            // simplesmente imprimindo o retorno acima irá aparecer o json
+            // .then((meuJson) => console.log(meuJson))
+
+            // analizando no postman a estrutura do json retornado, montar os thens para retornar a propriedade desejada
+            // (no ex abaixo a url). Pode ser de uma vêz só ou ir navegando para os nós mais internos aos poucos com 
+            // com mais de um then encadeado
+           // .then(resp => console.log("resp " + resp.data)); // Object
+             //.then((raiz) => raiz.data[0])
+             //.then((raiz) => console.log(raiz.data.length))
+            .then((raiz) => raiz.data)
+
+            .then(arrayImgs => {
+                for (let i = 0; i < arrayImgs.length; i++) {
+                    console.log(i);
+                    let url = arrayImgs[i].images.original.url;
+                    let img = document.createElement("img");
+                    img.src = url;
+                    img.style = "width:200px;height:200px;float:left;margin-right:10px;";
+                    //let localimagem = document.getElementById("localimagem");
+                    //localimagem.appendChild(img);
+                    document.body.appendChild(img);
+
+                }
+
+            }
+            );
+
+            //.then((noData) => {
+            //    let url = noData.images.original.url;;
+            //    //document.write(url);
+            //    let img = document.createElement("img");
+            //    img.src = url;
+            //    img.style = "width:200px;height:200px;";
+            //    let localimagem = document.getElementById("localimagem");
+            //    localimagem.appendChild(img);
+
+                //document.body.appendChild(img);
+
+           // });
+           //.then((meuJson)=>console.log(meuJson.data[0].images.original.url));
+
+    </script>
+</head>
+<body>
+    <!--<div style="width: 100%;float:left;">
+        <div id="localimagem" style="width:300px;height:300px; background-color:red;margin:auto;"></div>
+    </div>-->
+</body>
+</html>

@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+
+        const numeros = [3, 6, 9, 12,25];
+        let numerosNovo = [];
+
+        //for (var i = 0; i < numeros.length; i++) {
+        //    numerosNovo.push(numeros[i] * 2);
+        //}
+
+        // com  for of
+        for (var item of numeros) {
+            numerosNovo.push(item * 3);
+        }
+     //  console.log(numerosNovo);
+
+       // numeros.map(numero => console.log("map " + numero));
+
+        // O map só interage
+        console.log("map:");
+        var novoArrayMap = numeros.map(numero => numero * 100);//.map( x => " mais um "+ (x+1)) // Aceita encadeado
+        console.log(novoArrayMap);
+
+
+        //Filter
+        
+        let numeros2 = [];
+        for (var item of numeros) {
+            if (item % 2 == 0) 
+            {
+                numeros2.push(item);
+            }
+        }
+
+      //  console.log("numeros2 " + numeros2);
+
+        //O filter lembra o Where do Linq em C# e só busca os valores do array onde a função de filter() seja true
+       //console.log("filtrados " + numeros.filter(n => n % 2 == 0));
+
+        // encadeanto map com filter;
+        const novoArray = numeros.filter(x => x % 2 == 0).map(n => "par " + n );
+        console.log(novoArray);
+
+        //Reduce
+
+        // Começando usando um for normal
+        // const numeros = [3, 6, 9, 12,25];
+        let soma = 0;
+        for (var i = 0; i < numeros.length; i++) {
+            soma += numeros[i];
+        }
+      // console.log(soma);
+        // Nesta sobrecarga de reduce , recebe uma callback function e um valor inicial
+        // O valor inicial 10 é atribuido na primeira interação ao parâmetro 1 da function (valorAcumulador) e o valorArray é o valor corrente
+        // do array numeros
+        // O último parâmetro do reduce() determina o tipo de retorno do reduce que neste caso será um número
+        const numeros3 = [3, 6, 9];
+        const somaReduce = numeros3.reduce(function (valorAcumulador, valorArray)
+        {
+            console.log("valoracumulador:" + valorAcumulador + " - valorarray:" + valorArray);
+            return valorAcumulador + valorArray;
+        },10)
+
+        console.log(`soma reduce : ${somaReduce}`)
+
+        const pessoas = [
+            {
+                nome: "tito",
+                idade: 50
+            },
+            {
+                nome: "claudia",
+                idade: 43
+            },
+            {
+                nome: "henrique",
+                idade: 26
+            },
+            {
+                nome: "maysa",
+                idade: 17
+            },
+            {
+                nome: "borilson",
+                idade: 4
+            },
+
+        ];
+
+        //const pessoasAgrupadas = pessoas.reduce(function (valorAcumulador, valorArray) {
+        //    return valorAcumulador;
+        //}, { maiores: [], menores: [] }); // Object { maiores: [], menores: [] } - Retorna apenas o objeto vazio com estes 2 arrays vazios
+
+        const pessoasAgrupadas = pessoas.reduce(function (valorAcumulador, valorArrayCorrente) {
+            const propriedadeCorrente = valorArrayCorrente.idade > 18 ? "maiores" : "menores";
+            valorAcumulador[propriedadeCorrente].push(valorArrayCorrente);
+            return valorAcumulador;
+        }, { maiores: [], menores: [] });
+
+         console.log(pessoasAgrupadas);
+       
+    </script>
+</head>
+<body>
+
+</body>
+</html>

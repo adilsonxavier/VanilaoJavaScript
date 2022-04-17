@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+
+        /*
+        class Pessoa {
+            constructor(_nome, _sobrenome, _email) {
+                this.nome = _nome;
+                this.sobrenome = _sobrenome;
+                this.email = _email;
+            };
+
+
+            nomeCompleto() { return this.nome + " " + this.sobrenome };
+        }
+
+        //IMPORTANTE: Diferente de uma function, só posso instanciar a classe depois que ela estiver declarada, então só o código abaixo
+        //estivesse antes da criação da classe geraria erro
+        p1 = new Pessoa("adilson", "xavier", "axs@gmail");
+        p1.novaprop = "novo valor da prop nova";
+
+        console.log(p1.nomeCompleto());
+        console.log(p1.novaprop);
+        Pessoa.prototype.novapropriedade = "adilson";
+        console.log(p1.novapropriedade);
+        */
+
+        //Henrança
+
+        /*
+        function Conta() {
+            this.saldo = 0;
+            this.deposita = function (valor) {
+                this.saldo += valor;
+            };
+        }
+
+        var contaCorrente = new Conta();
+        contaCorrente.deposita(1000);
+        contaCorrente.deposita(500);
+        console.log("saldo " + contaCorrente.saldo); //1500
+
+        function ContaPoupanca() {
+            //não preciso copiar de Conta...
+            this.atualiza = function (indice) {
+                this.saldo += this.saldo * indice;
+            };
+        }
+
+        ContaPoupanca.prototype = new Conta(); // com isso contaPoupanca() herda de Conta()
+        //ContaPoupanca.prototype.constructor = ContaPoupanca;
+
+        var contapoup = new ContaPoupanca();
+        contapoup.deposita(350); // Método veio de Conta()
+        contapoup.atualiza(0.5); // Método veio de ContaPoupança
+        console.log("saldo da poupança: " + contapoup.saldo);
+        */
+
+        //Herança com classe
+        /*
+        class Conta {
+            constructor() {
+                this.saldo = 0;
+            }
+            deposita(valor) { this.saldo += valor; }
+        }
+
+        class ContaPoupanca extends Conta {
+            atualiza(indice) { this.saldo += this.saldo * indice; }
+        }
+
+        var contapoup = new ContaPoupanca();
+        contapoup.deposita(200); // herdou de Conta()
+        contapoup.atualiza(0.5); //  ContaPoupanca()
+        console.log("saldo novo da poupança: " + contapoup.saldo);
+        */
+        //Entendendo super
+        
+        class Car {
+            constructor(brand) {
+                this.carname = brand;
+            }
+            present() {
+                return 'I have a ' + this.carname;
+            }
+        }
+
+        //var carro = new Car("ford");
+        //console.log(carro.present());
+        
+
+        class Model extends Car {
+            constructor(brand, mod) {
+                super(brand);
+               // super("vw");
+                this.model = mod;
+            }
+            show() {
+                return this.present() + ', it is a ' + this.model;
+                // o this.present() herdou de car
+            }
+
+        }
+        car = new Car();
+        mycar = new Model("Ford", "Mustang");
+        console.log("present() "+ mycar.present());
+        console.log("show() "+ mycar.show());
+        console.log("tipo " + Object.getPrototypeOf(mycar));
+        console.log("tipo com proto " + mycar.__proto__);
+
+        let arr = [];
+        //console.log("arr " + arr.prototype);
+
+        console.log(Object.getOwnPropertyNames(Array.prototype));
+        let diff = function (a, b) { return a - b }
+        diff(30, 10);
+        
+        
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

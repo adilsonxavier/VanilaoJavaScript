@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        //Strict Comparison
+        //let objeto = { nome: "adilson", idade: 50 }
+        //var meuarray = ["maysa", 5, objeto];
+        //var meuarray2 = [1,2,3];
+        //console.log(meuarray[2].nome);
+        //console.log(typeof (objeto));
+        //console.log(typeof (objeto.nome));
+        //console.log(typeof (objeto.idade));
+
+        //let meunome = "adilson";
+
+        //if (meunome === objeto.nome) {
+        //    document.write("igual");
+        //}
+
+        //var inteiro = 5;
+        //var bigint = 5n;
+        //if ((inteiro === bigint)) {
+        //    document.write("igual<br/>");
+        //}
+        //else {
+        //    document.write("diferente<br/>");
+        //}
+        //var a = 10;
+        //var grande = a > 13;
+        //if (!grande) {
+        //    document.write("pequeno");
+        //}
+
+        
+        const errors = { nome: false, imagem: true, imagem2: false, imagem3: false }; //false};
+
+        //const applyErrorClass = (campo) => (campo in errors)  ?" tem o campo" : "nao tem o campo"; // o in retorna true 
+                                                               // se o existir uma prop com o nome do parâmetro
+
+        const applyErrorClass = (field) => ((field in errors && errors[field]) ? " Ok " : "não ok");
+
+        console.log("resu: " + applyErrorClass("imagem"));
+
+       // console.log(Object.values(errors)) // Array [false, true] => o values retorna só os valores do objeto, sem o nome das propriedades
+
+        console.log("resultado:" + Object.values(errors).every(x => x == false)); // O every retorna true somente se todos os values do array
+                                                                                  // Satisfazerem a condição
+
+        // console.log("resultado 2 :" + errors.every(x => x == false)); // O every não funciona direto no array
+
+
+
+        // O operador unário + simplesmente executa a função Number() ( e o menos da o valor oposto)
+        /*
+        console.log("operador unário");
+        console.log(+true); // 1 
+        console.log(+"Infinity"); // Infinity // A string "Infinity" escrita exatamente assim com I maiúsculo pode ser convertida
+                                  // Para Infinity ( que é um "número" e não NaN )
+        console.log(+Infinity); // Infinity 
+        console.log(+"Infinityii"); // NaN
+        console.log(+"not a number"); // NaN
+        console.log(+"50"); // 50
+        console.log(Number("50")); // 50 (equivale a linha acima)
+        console.log(+"adilson"); // Nan
+        */
+        //var a = Infinity;  // Não é string . Infinity é um valor específico como NaN ou null
+        //console.log("infinito " + a);
+        //b = NaN;
+        //console.log("b " + b + 5);
+
+        //var z = 5   // z = 5
+        ////z = z++     // z = 5
+        //var x = 0;
+        //x = z++;
+        //x++;
+        //console.log("x " + x);
+        //console.log("z " + z);
+
+        
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        //if (true) {
+        //    let a = 5;
+        //    var b = 6;
+        //}
+      // document.write(a+ "<br/>");
+      //  document.write(a); //  da erro por que o a é local dentro do bloco if pois foi criado com o let
+        //document.write(b); //  nao erro por que o b é global dentro do bloco if pois foi criado com o var então é global dentro do scopo window
+        //document.write(window.b);                   //  tanto que se eu escrever window.e ele vai ser encontrado
+
+
+        function teste() {
+            var j = 5;// " criado com var fora do if<br/>";
+            if (true) {
+                let c = 7;
+                var d = 8;
+            }
+            document.write(d + "d var dentro da function e do if <br/>");
+            document.write(j + "j var dentro da function mas fora do if<br/>");
+           // document.write(c + "c com let<br/>"); // da erro
+        }
+
+        teste();
+        document.write(j); // da erro por que o d foi criado com var mas seu esclopo global só vale dentro da function
+
+ 
+
+        //document.write(d); // da erro mesmo após ter rodado a função
+
+        //let fruta = "maca";
+        //switch (fruta) {
+        //    case "banana":
+        //       var cor = "am arelo";
+        //        break;
+        //    case "maca":
+        //        var cor = "verde"; // com o let da erro por que já foi definida dentro do switch
+        //        break;
+        //    default:
+        //        break;
+        //}
+        //document.write(cor); // não dá erro por que cor foi criado com var ( no switch dá pra acessar a var fora dele, diferente do function)
+
+        //OBS: DE PREFERENCIA PRO let E NÃO O VAR
+        //=======================================
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

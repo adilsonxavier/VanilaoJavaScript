@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        function somar(n1, n2, f) {
+            let r = n1 + n2;
+            f(r); // guando o parâmetro f recebido é a funcao functionCom2parametros e é executado como está aqui (com um só parametro)
+            // não dá erro. Simplesmente o segundo parâmeto é passado como undefined em functionCom2parametros = function (saida, outroparametro)
+            return r;
+        }
+      
+        //ArrowFunction
+        //================
+      //  let comArrowFunction = somar("60", "7", (saida) => { document.write(`comArrowFunctiondd : ${saida}<br/>`); document.write("m..") } );
+        //document.write("funcss "+ typeof(comArrowFunction) +"\n");
+
+       // // Pode ser sem parenteses também
+     let arrowSemPar = somar(5, 7, saida => document.writeln(`arrowSemPar: ${saida}<br/>`));
+        //somar(5, 7, saida => document.writeln(`arrowSemPar2: ${saida}<br/>`));
+
+       // //lambta sem argumentos
+        let minhavar  = "Maysa";
+        let minhafunction = () => document.write(`contuedo: ${minhavar}<br/>`);
+       minhafunction();
+
+       // var subtrair = (n1, n2) => document.write(`subtr:${n1- n2}<br/>`);
+
+       // subtrair(10, 3);
+
+       // //(function () { document.write("funcao anonima executada imediatamente <br/>") })()
+       //// let comArrowMaisSimples = somar(12, 13, saida => document.write(`comArrowMaisSimples : ${saida}<br/>`))
+
+       // var cursos = ["java", "c#", "php"];
+       //// //o método forEach para array aceita uma function até 3 parâmetros (valor, indice, arraydestring[])
+       //// //esta função pode ser anônima , não anônima ou arrow function
+       //cursos.forEach(function (valor, indice) { document.write(`valor sem arrow ${valor} - indice ${indice}<br/>`)});
+
+       // cursos.forEach((value, indice) => document.write(`valor ${value} - indice ${indice}<br/>`));
+
+        
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

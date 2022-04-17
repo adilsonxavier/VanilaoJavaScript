@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        //let nome = 'João'
+
+        //function dizerFrase() {
+        //    console.log(`${this.nome} está correndo para pegar o trem!`) // joao ( window.nome)
+        //}
+
+        //dizerFrase() // João está correndo para pegar o trem!
+
+        //let pedro = {
+        //    nome: 'Pedro',
+        //    dizerFrase: function () {
+        //        console.log(`${this.nome} está correndo para pegar o trem!`) // semm o this iria imprimir a var window.nome = joão
+        //    }
+        //}
+
+        //pedro.dizerFrase() // Pedro está correndo para pegar o trem!
+
+        //////////////////////
+
+        //var artista = 'The Beatles'
+
+        //function tocar() {
+        //    let instrumentos = ['baixo', 'guitarra', 'microfone', 'bateria']
+        //    console.log(`Estamos tocando ${this.artista}!`)   // o this não faz diferença aqui porque vai imprimir window.artista
+        //}
+
+        //tocar() // Estamos tocando The Beatles!
+
+        ///////////////// call 
+
+        //const article = {
+        //    title: 'Descomplicando call, apply e bind',
+        //    language: 'JavaScript',
+        //};
+
+        //function print() {
+
+        //    console.log(`${this.title} em ${this.language}`);
+        //}
+
+        //console.log("sem call: \n");
+        //print();
+
+        //console.log("com call: \n");
+        //print.call(article);
+
+        //console.log("call com 2 argumentos");
+
+        //print2.call(article, "aa");  //não dá erro
+
+        //console.log("usando call como se fosse apply");
+        //print2.call(article, ["adilson", "xavier"]);
+
+        /////////////// apply
+
+        //console.log("com apply:");
+
+        //function print2(nome,sobrenome) {
+        //    console.log(`${this.title} em ${this.language}   ${nome} ${sobrenome}`);
+        //}
+
+        //print2.apply(article, ["adilson", "xavier"]);
+
+        //print2.apply(article); // mão dá erro . so imprime os argumentos nome e sobrenome como undefined
+
+        //print2.apply(["adilsn","savier"]); // mão dá erro . so imprime tudo (inclusive os itens passados no array) como undefined
+
+        /////////////// bind
+
+        function juntaNomes(sobrenome1, sobrenome2) {
+          
+            console.log(`o this é ${this} nome ${sobrenome1} sobrenome ${sobrenome2}`)
+        }
+
+        const bindResultFunction = juntaNomes.bind("adilson")
+
+        bindResultFunction("xavier", "de souza");
+
+       // var nome = "adilson"
+
+        //function print(nome,sobrenome) {
+        //    console.log(this+ " "+ nome + " "+ sobrenome);
+        //}
+
+        //print("adilson"," xavier");
+
+        //print.apply("seu nome é ", ["adilson", "xavier"]);
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

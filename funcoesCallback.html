@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+
+        //function primeiroBloco() {
+        //    // Aguardar 5 segundos
+        //    setTimeout(function () {
+        //        console.log('Esse é o primeiro bloco de comandos após 5 segundos');
+        //    }, 5000);
+        //    console.log("segunda linha primeiro bloco");
+        //}
+        //function segundoBloco() {
+        //    console.log('Esse é o segundo bloco de comandos');
+        //}
+       // primeiroBloco();
+        //segundoBloco();
+        /*
+        function primeiroBloco(funcaoCallBack) {
+            // Aguardar 5 segundos
+            setTimeout(function () {
+                console.log('Esse é o primeiro bloco de comandos após 5 segundos');
+            }, 5000);
+            funcaoCallBack();
+        }
+        function segundoBloco() {
+            console.log('Esse é o segundo bloco de comandos');
+        }
+        primeiroBloco(segundoBloco);
+        */
+        //setTimeout(function () { console.log("serei executado apos 5 segundos"); }, 5000);
+        //console.log("serei executado imediatamente e antes so setTimeout");
+
+
+        // Aninhado
+        setTimeout(function () {
+            console.log("primeiro");
+            setTimeout(function () {
+                console.log("segundo");
+                setTimeout(function () {
+                    console.log("terceiro");
+                    //var cont = 0;
+                    //setInterval(function () { console.log(cont); cont++; }, 1000);
+                }, 2000);
+            }, 2000);
+
+        }, 2000);
+
+        // O setInterval não espera o setTimeOut terminar e vão começar ao mesmo tempo
+        // Para controlar isso pode ser colocado dentro de um setTimeout aninhado como acima
+        var cont = 0;
+        setInterval(function () { console.log(cont); cont++; }, 1000);
+
+      
+   
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

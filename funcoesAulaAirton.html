@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+   <script>
+       /*
+       function somatudo(meuArray) {
+           var total = 0;
+
+           // O for of parece um foreach
+           for (var valor of meuArray) {
+               total += valor;
+           }
+           return total;
+       }
+
+       var resul = somatudo([2, 4, 6]);
+       console.log(resul);
+       */
+
+
+       //Parametro rest
+       function parametroRest(rua, num, ...complementos) {  // parameto rest tem que ser o último é só pode ter um na função
+       //function parametroRest(...complementos,rua, num) { // assim da erro ( tem que ser o último )
+           console.log(rua + ", " + num);
+           var bairro = complementos[0]; // O parâmetro ...complementos é um array que neste caso o índice 0 é o terceito item do
+                                         // array passado  na chamada da funç~eo, por que os outros 2 já foram passados (rua e num )
+           console.log(bairro);
+
+          // com desestruturação de array
+           var [bairro2, cidade, estado] = complementos;
+           console.log(`var bairro ${bairro2} cidade ${cidade} estado ${estado}`);
+           //console.log(bairro2, cidade);
+       }
+
+       parametroRest("a", 789, "tude", "PG","sp");
+   </script>
+</head>
+<body>
+
+</body>
+</html>

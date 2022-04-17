@@ -1,0 +1,1 @@
+﻿export let admin = {nome:"adilson xavier ",idade:50};

@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+
+  
+
+</head>
+<body>
+    <form action="index.html" id="loginform">
+        Login <input type="text" id="mame" name="name" /><br />
+        senha <input type="text" id="idsenha" name="senha" /><br />
+        <button type="submit">Enviar</button>
+
+    </form>
+    <h2 id="resposta"></h2>
+
+    <script>
+
+        const form = document.querySelector("#loginform");
+        form.addEventListener("submit", evt => {
+            evt.preventDefault();
+            doSubmit();
+        });
+
+        async function doSubmit() {
+            const nome = form.elements["name"].value;
+            const  senha = form.senha.value;
+            const resposta_el = document.querySelector("#resposta");
+            var user = {
+                name: nome,
+                password: senha
+            }
+
+            try {
+                resposta_el.innerHTML = "<span>Aguarde...</span>";
+                const loginResponse = await login(user);
+                const dados = await loginResponse.json();
+                if (dados.token) {
+                    resposta_el.innerHTML = `<span>${dados.token}</span>`;
+                }
+                else {
+                    resposta_el.innerHTML = `<span>${dados.message}</span>`;
+                }
+               
+            } catch (err) { resposta_el.innerHTML = `<span>${err}</span>`; }
+          
+            
+
+        }
+
+        function login(user) {
+           
+           return fetch("http://localhost:32291/v1/account/login", {
+                method: "post",
+                headers: new Headers({
+                        "Content-type":"application/json"
+                }),
+                body: JSON.stringify(user)
+            });
+        }
+       
+    </script>
+</body>
+</html>

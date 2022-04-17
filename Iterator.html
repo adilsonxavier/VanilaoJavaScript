@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        // No exemplo abaixo é usado o iterator com objetivo equivalente a desestruturação do array
+        /*
+        const meuarray = ['a', 'b', 'c', 'd', 'e'];
+        console.log(meuarray); // O "Symbol(Symbol.iterator): function values " é uma das propriedades do prototype do array
+        const iterator = meuarray[Symbol.iterator](); // O primeiro next() pega o primeiro item de meu array
+        const first = iterator.next().value;
+        iterator.next().value; // Since it was skipped, so it's not assigned
+        const third = iterator.next().value;
+        iterator.next().value;// Since it was skipped, so it's not assigned
+        const last = iterator.next().value;
+        console.log(last);
+        */
+
+        /*
+        const allAuthors = {
+
+            fiction: [
+                'Agatha Christie',
+                'J. K. Rowling',
+                'Dr. Seuss'
+            ],
+            scienceFiction: [
+                'Neal Stephenson',
+                'Arthur Clarke',
+                'Isaac Asimov',
+                'Robert Heinlein'
+            ],
+            fantasy: [
+                'J. R. R. Tolkien',
+                'J. K. Rowling',
+                'Terry Pratchett'
+            ],
+        }
+
+
+        for (const author of allAuthors) {  //TypeError: allAuthors is not iterable
+            console.log(author);
+        }
+        */
+        // Para não dar o erro "TypeError: allAuthors is not iterable" acima, o cód.abaixo transforma o array em iterable e com isso
+        // é possível usar o laço for-of
+
+        const myFavouriteAuthors = {
+            allAuthors: {
+                fiction: [
+                    'Agatha Christie',
+                    'J. K. Rowling',
+                    'Dr. Seuss'
+                ],
+                scienceFiction: [
+                    'Neal Stephenson',
+                    'Arthur Clarke',
+                    'Isaac Asimov',
+                    'Robert Heinlein'
+                ],
+                fantasy: [
+                    'J. R. R. Tolkien',
+                    'J. K. Rowling',
+                    'Terry Pratchett'
+                ],
+            },
+            [Symbol.iterator]() { // O método nativo do obj Array Symbol.iterator]() está sendo sobreescrito para atender a necessidade
+                                  // de um objeto mais complexo que um simples array
+
+                // Get all the authors in an array
+                const genres = Object.values(this.allAuthors); // object values retorna um array só com os valores de allAuthores
+                                                               // que serão um array com 3 elementos (gêneros ) , cada elemento é um
+                                                                // um outro array com o nome dos autores
+
+                // Store the current genre and author index
+                let currentAuthorIndex = 0;
+                let currentGenreIndex = 0;
+
+                return {
+                    // Implementation of next()
+                    next() { // O objeto next está sendo sobreescrito
+                        // authors according to current genre index
+                        const authors = genres[currentGenreIndex];
+
+                        // doNotHaveMoreAuthors is true when the authors array is exhausted.
+                        // That is, all items are consumed.
+                        const doNothaveMoreAuthors = !(currentAuthorIndex < authors.length);
+                        if (doNothaveMoreAuthors) {
+                            // When that happens, we move the genre index to the next genre
+                            currentGenreIndex++;
+                            // and reset the author index to 0 again to get new set of authors
+                            currentAuthorIndex = 0;
+                        }
+
+                        // if all genres are over, then we need tell the iterator that we 
+                        // can not give more values.
+                        const doNotHaveMoreGenres = !(currentGenreIndex < genres.length);
+                        if (doNotHaveMoreGenres) {
+                            // Hence, we return done as true.
+                            return {
+                                value: undefined,
+                                done: true
+                            };
+                        }
+
+                        // if everything is correct, return the author from the 
+                        // current genre and incerement the currentAuthorindex
+                        // so next time, the next author can be returned.
+                        return {
+                            value: genres[currentGenreIndex][currentAuthorIndex++],
+                            done: false
+                        }
+                    }
+                };
+            }
+        };
+
+        //for (const authoro of myFavouriteAuthors) {
+        //    console.log(authoro);
+        //}
+
+        console.log(...myFavouriteAuthors)
+
+      /*  console.log(myFavouriteAuthors)*/
+      
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

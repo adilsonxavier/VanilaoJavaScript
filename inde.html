@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        //console.log("tito" + Number.MAX_VALUE);
+        //window.alert("aaa")
+       // { }
+        let nome = "tito";
+        console.log(typeof nome);
+
+        let ende = { rua: "ubakkdo", num: 789 };
+        // {} = objeto [] = array
+        console.log(typeof ende);
+        // ende = null;
+        console.log("pbj  d :"+ ende["rua"]);
+        //console.log(typeof ende);
+
+        ende = ["ubakkdo", "num: 789"];
+        ende = ["ubakkdo", 789]; // também aceita
+        ende.push(888);
+        //console.log(ende);
+        //console.log(typeof ende[2]); // tipo do array é object
+        //console.log(ende[5]); // undefined - não da erro se indice for maior que tamanho do array
+
+        let ultimo = ende.pop(); // remove o ultimo indice mas antes salva conteudo na variável ultimo
+        console.log("ultimo "+ultimo);
+        console.log(ende);
+
+        let primeiro = ende.shift(); // remove o primeiro indice mas antes salva conteudo na variável primeiro
+        console.log("primeiro " + primeiro);
+        console.log(ende);
+
+        numero = 123n; // bigint
+        console.log("tipo " + typeof numero);
+        console.log("tipo com par  " + typeof (numero));
+        //let nome2 = 'primeiro';
+        //console.log(nome2[0]); /// imprime p - uma string também é um ammay
+
+
+        ////for (let i = 0; i < 5; i++) {
+        ////    console.log(i);
+        ////}
+
+        //nome = `adi
+        //        lson`; // aceita crase (ou grave) , aspas simples e aspas duplas pra string
+        //               // mas só com grave aceita quebrar a linha( e será impresso na tela em 2 linhas também)
+        //alert(nome);
+        //idade = 50;
+        //console.log(`
+        //     nome ${nome}
+        //     idade ${idade}
+        //     `); // Já o template literal só aceita crase
+        //// Obs: no Javascript tem que por um $ para cada variával que vai ser impressa ${variavel}
+        //// Não confundir com o C# onde é uma variável só no começo e fora da string:
+        //// string a = $" nome: {nome} - idade: {idade}"
+        nome = `adilson`;
+        console.log(nome.indexOf `i` ); // 2  -  Veja que indexOf é aceito com ou sem parenteses
+        console.log(nome.indexOf(`z`)); // -1
+    </script>
+</head>
+<body>
+
+</body>
+</html>

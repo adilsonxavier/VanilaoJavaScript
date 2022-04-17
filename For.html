@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        var carros = [
+            { id: 1, modelo: 'Corsa', marca: 'Chevrolet', preco: 45000, createdAt: 1534506085621 },
+            { id: 2, modelo: 'Punto', marca: 'Fiat', preco: 120000, createdAt: 1534506085621 }
+        ]
+
+        var total = 0
+
+        // Com for normal
+
+        for (var i = 0; i < carros.length; i++) {
+            total += carros[i].preco
+        }
+
+     
+        //Não for of
+        total = 0;
+        for (const carro of carros) {
+            total += carro.preco  // Não preciso do indice do array
+        }
+
+        total = 0;
+        for (const i in carros) {  //for ([indice] in [objeto])
+            total += carros[i].preco
+        }
+        console.log(total);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

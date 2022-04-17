@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+  <script>
+
+      // Getter e setter
+     var pessoas = [
+          {
+              nome: "tito",
+              idade: 50
+          },
+          {
+              nome: "claudia",
+              idade: 43
+          },
+          {
+              nome: "henrique",
+              idade: 26
+          },
+      ];
+
+      var pessoa =
+      {
+          posicao: 0,
+          // com o get eu posso usar a function atual() como se fosse uma propriedade ( sem parênteses)
+          get atual() {
+              return pessoas[this.posicao];
+            //  return pessoas[posicao]; // sem o this dá o erro Uncaught ReferenceError: posicao is not defined
+          },
+          set atual(posicao) {
+              this.posicao = posicao;
+          },
+          proximo() {
+              ++this.posicao;
+              //++posicao;
+          },
+          anterior: function () {
+             --this.posicao; // aceita tanto assim como this.posicao--
+             // --posicao;
+          }
+      }
+
+      pessoa.proximo();
+     // console.log(pessoa.atual()); TypeError: pessoa.atual is not a function
+      pessoa.proximo();
+    //  pessoa.proximo();
+      console.log("pessoa atual ");
+      console.log( pessoa.atual); //Object { nome: "henrique", idade: 26 } // Como eu usei o atual pra retornar e não atribuir um valor a ele,
+                                 // o JS já entende que tem que usar a função  get atual()
+
+      pessoa.atual = 1 // Já aqui, pelo fato de eu estar atribuindo o valor ele entendeu que eu usei set atual(1)
+
+      console.log("pessoa atual2 ");
+      console.log(pessoa.atual);// Object { nome: "claudia", idade: 43 }
+
+      console.log("posicao atual3 ");
+      console.log(pessoa.posicao);
+      //pessoa.anterior();
+      //console.log(pessoa.posicao);
+      console.log("atual " + pessoa.atual.nome); // usanto atual como propriedade graças ao get
+  </script>
+</head>
+<body>
+
+</body>
+</html>

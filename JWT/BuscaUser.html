@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+ 
+</head>
+<body>
+    <form id="formUser">
+        <label for="userName">User:</label>
+        <input type="text" id="userName" />
+        <button type="submit">Buscar</button>
+    </form> <br />
+    <div id="retornoApi"></div>
+
+
+    <script>
+        const form = document.querySelector("#formUser");
+        form.addEventListener("submit", (evt) => {
+            evt.preventDefault();
+            doBusca();
+        })
+
+        async function doBusca() {
+            const userName = document.querySelector("#userName");
+            const retornoApi = document.querySelector("#retornoApi");
+            retornoApi.innerHTML = "<h2>Aguarde..</h2>";
+            // alert(userName.value);
+            try {
+                let userNameResponse = await getUser(userName.value);
+                if (userNameResponse.ok) {
+                    var data = await userNameResponse.json();
+                    if (data.id) {
+                        retornoApi.innerHTML = `<table border="1"><tr>
+                                            <td>id</td>
+                                            <td>nome</td>
+                                            <td>senha</td>
+                                            <td>autorizaçã</td></tr>
+                                            <tr>
+                                            <td>${data.id}</td>
+                                            <td>${data.name}</td>
+                                            <td>${data.password}</td>
+                                            <td>${data.role}</td></tr></table>`
+
+                    }
+                    else {
+                        retornoApi.innerHTML = "usuário não encontrado";
+                    }
+                }
+                else {
+                    retornoApi.innerHTML = "erro linha 51" + userNameResponse.status;
+                }
+               
+            } catch (erro) { retornoApi.innerHTML = erro }
+
+        }
+            //retornoApi.innerHTML = JSON.stringify( data);
+
+
+        function getUser(userName) {
+            return fetch(`http://localhost:32291/v1/account/getUser/${userName}`, {
+                method: "get",
+                headers: new Headers({
+                    "Content-type": "application/json",
+                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Im1heXNhIiwicm9sZSI6ImVtcGxveWVlIiwibmJmIjoxNjM2ODUyODgyLCJleHAiOjE2MzY4NjAwODIsImlhdCI6MTYzNjg1Mjg4Mn0.MAhSb28FYw7i6lfIg08Gf3zcwPVHFpe3o2the51Der8"
+                })
+            });
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+   
+</head>
+<body>
+    <ul id="users"></ul>
+
+    <script>
+        const ul = document.getElementById("users");
+        const url = "https://jsonplaceholder.typicode.com/users";
+
+
+
+            fetch(url)
+                .then(resp => resp.json()) // Obs: se fosse (resp) dava na mesma por que só tem um parâmetro (resp)
+                                           // Os parênteses são obrigatórios quando:
+                                           // 1  - tem mais de um parâmetro (a,b) => ...
+                                           // 2  - Não tem nenhum marãmetro () => ...
+                .then(function (data) {
+                    console.log(data);
+                   
+
+                    // O método Array.map faz uma interação com cada item do array ( nada a ver com o fetch)
+                    return data.map(function (itemArray) { 
+                        let li = document.createElement("li");
+                        li.innerHTML = `${itemArray.name} ( ${itemArray.username} )`;
+                        ul.appendChild(li);
+                    });
+
+                })
+                .catch((error) => console.log("o erro foi "+ error));
+
+
+
+
+
+    </script>
+</body>
+</html>

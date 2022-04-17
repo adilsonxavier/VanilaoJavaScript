@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <script>
+
+        /*
+        console.log(this); // window
+
+        function Usuario() {
+            console.log(this);
+        }
+
+        Usuario(); //window
+
+        // Aqui é uma outra forma de chamar uma função usando o new onde ela se transforma em um objeto
+        // e o escopo do this não é mais window e sim este objeto
+        new Usuario(); // Object
+        */
+        //call
+
+
+
+        /*
+        function Pessoa() {
+            console.log(this); 
+        } 
+
+        minhaPessoa = {
+            nome:"Tito"
+        }
+
+        // Com o call eu altero o valor de this na função Pessoa
+        Pessoa();
+        Pessoa.call(minhaPessoa); // Object:{ nome: 'tito'} 
+                                  // executando com o call o this dentro de Pessoa não sera mais Window e sim o objeto minha pessoa
+        */
+
+        ////// Function com ´parâmetros usando call
+        
+        function Pessoa2(idade) {
+            console.log(this);
+            console.log("nome é " + this.nome);
+            console.log("idade com this :" + this.idade);
+            console.log("idade :" + idade);
+        }
+
+        minhaPessoa2 = {
+            nome: "Tito", idade: 50
+        }
+
+        Pessoa2(50); // chamando Pessoa() normalmente o this é window então quando for impresso this.variavel será undefined
+                     // A não ser é claro que seja já tenham antes sido definidas globalmente
+
+
+        Pessoa2.call(minhaPessoa2, 55);
+        //// Com o call , se o método recebe parâmetros, o primeiro será o this e do segundo em diante são os parâmetros
+        //// que o método
+        //Pessoa2.call(minhaPessoa2, 50); // Object:{ nome: 'tito'}, idade: 50
+
+
+        //// apply - Funciona quase igual ao call mas do segundo parametro em diante eu passo com um array
+        Pessoa2.apply(minhaPessoa2, [52]); 
+
+        //// bind - Parecido com o call mas ao invéz de executar o mátodo ele só retorna uma função mas já com os parametros preenchidos
+        Pessoa2.bind(minhaPessoa2, 54);// Não é executado por que ele tem que servir de valor para uma variável
+        var pessoa2Func = Pessoa2.bind(minhaPessoa2, 54);
+        pessoa2Func();
+
+        ////// Também posso passar parte só o objeto que será o this  no bind e passar o resto quando chamar a function nova:
+
+        //var pessoa3Func = Pessoa2.bind(minhaPessoa2);
+        //pessoa3Func(56);
+
+        //// Não dá para alterar o this em uma arrow function
+
+        var imprimeThis = () => console.log(this); //window (consigo acesso ao this do contexto mas não alterá-lo)
+
+        //imprimeThis();
+         
+        imprimeThis.call(minhaPessoa2); // também imprime window
+
+   </script> 
+</head>
+<body>
+
+</body>
+</html>

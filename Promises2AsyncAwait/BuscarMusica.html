@@ -1,0 +1,83 @@
+﻿ <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+</head>
+<body>
+    <form id="letrasForm">
+        <label for="artist">Artista </label>
+        <input type="text" id="artist" /><br />
+        <label for="song">Música </label>
+        <input type="text" class="song" /><br />
+        <button type="submit">Enviar</button>
+
+    </form>
+
+    <br /><br />
+    <pre id="lyrics"></pre>
+
+    <script>
+
+
+        function findLyrics(artist, song) {
+            return fetch(`https://api.lyrics.ovh/v1/${artist}/${song}`); // Se a url não ficar azul no VS é por que a syntaxe da url está errada
+        }
+
+        const form = document.querySelector("#letrasForm");
+        form.addEventListener("submit", (evt) => {
+            evt.preventDefault();
+            doSubmit();
+        });
+
+        // sem async /await
+        
+        function doSubmit()
+        {
+            const lyrics_el = document.querySelector("#lyrics");
+            const artist = document.querySelector("#artist");
+            const song = document.querySelector(".song"); // Só pra mostrar que o querySelector funciona com class e não só com Id
+
+            lyrics_el.innerHTML = "<div><span>Carregando</span></div>";
+
+            findLyrics(artist.value, song.value)
+                .then((response) => response.json() )
+                .then(data => {
+                    if (data.lyrics)
+                        lyrics_el.innerHTML = data.lyrics; // a api traz o elemento pai "lyrics" em seu json quando acha a música
+                    else
+                        lyrics_el.innerHTML = data.error; // a api traz o elemento pai "error" em seu json quando acha a música
+                })
+                .catch(er => lyrics_el.innerHTML = `erro foi ${er} `);
+        }
+        
+
+        // com async / await
+
+        async function doSubmit() {
+            const lyrics_el = document.querySelector("#lyrics");
+            const artist = document.querySelector("#artist");
+            const song = document.querySelector(".song"); // Só pra mostrar que o querySelector funciona com class e não só com Id
+
+            lyrics_el.innerHTML = "<div><span>Carregando</span></div>"; // Repare que este html ( equivalente ao loader ajax) aparece com ou sem 
+                                                                        // async / await
+            try {
+                const findLyricsResponse = await findLyrics(artist.value, song.value);
+                const data = await findLyricsResponse.json();
+                if (data.lyrics)
+                    lyrics_el.innerHTML = data.lyrics; // a api traz o elemento pai "lyrics" em seu json quando acha a música
+                else
+                    lyrics_el.innerHTML = "erro" + data.error; // a api traz o elemento pai "error" em seu json quando acha a música
+
+            } catch (erro) {                   // Obs: Diferente do catch da Promise na versão anterior ( sem async/await),
+                lyrics_el.innerHTML = erro     // este catch do try já espera uma string com o erro quando o feth não retorna 200
+            }
+     
+
+        }
+
+        
+    </script>
+</body>
+</html>

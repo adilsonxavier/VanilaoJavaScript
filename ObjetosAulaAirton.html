@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+   <script>
+       const meuObj = {
+           nome:"tito",
+           "ldade": 52,
+           "nome-completo" :" xavier de souza", // como  propriedade tem hifem precisa passar o nome entre aspas
+           outraProp: "sei lá",
+           meuArray: [ 3,4,5 ]
+                    
+       }
+
+       console.log(meuObj);
+      // console.log(meuObj.nome-completo); // Dá erro 
+       console.log(meuObj["nome-completo"]); // Tem que passar a propriedade com hifem entre colchetes
+       console.log(meuObj.ldade); // O idade também foi criado entre aspas mas como não tem hifem não precisa dos colchetes
+       console.log(meuObj["nome"]);  // Não precisaria dos colchetes mas se por colchetes também não dá erro
+
+       var minhaProp = "outraProp";
+       console.log("valor da prop " + meuObj[minhaProp]) // o nome da prop pode ser uma string
+
+       var minhaProp2 = "meuArray";
+       meuObj[minhaProp2].push(7);
+       console.log("meu array: " + meuObj.meuArray);
+
+       //Também posso criar com nome da variável na própria declaração do obj: (novo no ES)
+       var novaprop = "pais";
+       var objetoTeste = {
+           estado:"sp",
+           [novaprop]:"Brasil"
+       }
+
+       console.log(objetoTeste); // Object { estado: "sp", pais: "Brasil" }
+
+       // deletando propriedade - Veja que delete é uma palavra reservada e não um método de Object
+       delete meuObj.outraProp;
+       console.log(meuObj);
+
+       // obj com função
+       var meuObj2 = {
+           nome: "adilson",
+           funcao1: function (nome) { console.log("funcao1 " + nome) },
+
+           //Veja que nesta segunda forma abaixo de passar uma função dentro de um objeto eu omito 
+           //a palavra function e os 2 pontos
+           funcao2(nome) { console.log("funcao2 " + nome) }
+       }
+
+       meuObj2.funcao1("tito");
+       meuObj2.funcao2("adilson") // funciona do mesmo jeito
+
+       var cor = "verde";
+       var person = {
+           nome: "tito",
+           // quando o nome da propriedade for igual ao nome de uma variável que é seu conteúdo , pode passar so o nome delas:
+           cor,  // equivalente a  cor : cor
+          // sexo  // contudo, se a variável não estiver declarada vai dar erro
+       }
+
+       console.log(person); //Object { nome: "tito", cor: "verde" }
+
+       /// Mergeando objetos
+       var obj1 = {
+           nome: "claudia a",
+           idade: 43,
+           sexo:"f"
+       };
+       var obj2 = {
+           idade: 50,
+           time: "santos"
+
+       }
+
+       // Sintaxe Object.assign( target (neste caso um objeto vazio {} , array de objetos)
+       var objMergeado = Object.assign({}, obj1, obj2);
+
+       // a idade do obj2 sobreescreveu a idade do obj1
+       console.log("objMergeado " );
+       //console.log( objMergeado); //Object { nome: "claudia a", idade: 50, sexo: "f", time: "santos" }
+
+       
+       //Se eu não quizer um objeto novo eu omito o primeiro parâmetso
+       Object.assign(obj1, obj2);
+       console.log("Object.assign(obj1, obj2)");
+       console.log(obj1);
+
+       
+       //Uma outra forma de fazer a mesma coisa é com a sintaxe do Spread ( espalhar) com ... (novo no ES6)
+       // e substitui o Object.assign()
+       var obj3 = {
+           cidade: "p gde",
+           musica: "forro"
+       }
+       // Aqui eu espalho as propriedades e valores de obj1,obj2 e obj3 para dentro de novoObj
+       var novoObj = {
+           ...obj1,
+           ...obj2,
+           ...obj3
+       }
+       console.log(novoObj); //Object { nome: "claudia a", idade: 50, sexo: "f", time: "santos", cidade: "p gde" }
+       
+   </script>
+</head>
+<body>
+
+</body>
+</html>

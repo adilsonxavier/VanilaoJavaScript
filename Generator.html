@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        function* generatorFunction() { // Line 1
+            console.log('This will be executed first.');
+            yield 'Hello, ';   // Line 2  
+            console.log('I will be printed after the pause');
+            yield 'World!';
+        }
+
+        const generatorObject = generatorFunction(); // Line 3
+        console.log(generatorObject); // vai imprimir : Generator {  }
+
+       //// generatorFunction();  // Da erro não é uma function
+
+       // console.log(generatorObject.next().value); // O value é só o valor de yield ('hello') ( que equivale a um return )
+
+        console.log(generatorObject.next().value + " - " + generatorObject.next().done); // Line 4
+        console.log(generatorObject.next().value + " - " + generatorObject.next().done);  // Line 5
+        console.log(generatorObject.next().value + " - " + generatorObject.next().done);  // Line 6//
+        // Hello,
+        // I will be printed after the pause
+        // World!
+        // undefined
+
+       
+        function * generatorFunc() {
+            yield 'a';
+            return 'b'; // Generator ends here.
+            yield 'a'; // Will never be executed. 
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

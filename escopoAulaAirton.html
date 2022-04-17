@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+   <script>
+       function imprime() {
+           var a = "dentro";
+           b = "global";
+       }
+
+       imprime()
+
+       console.log(b); // Não dá erro por que como b foi declarada sem var nem let , ela fica com escopo global mesmo dentro da functio
+                        // - o mesmo escopo do windows
+       console.log(a); // da erro por que foi criado com var dentro da function
+
+   </script>
+</head>
+<body>
+
+</body>
+</html>

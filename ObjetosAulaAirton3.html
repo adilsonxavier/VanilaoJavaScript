@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+  <script>
+      //function imprimeUsuario({ nome, idade, sexo = "m" }) { // obj usuario não tem prop sexo, foi criado valor default = "m"
+      //    console.log(nome);
+      //    console.log(idade);
+      //    console.log(sexo);
+      //}
+
+      var usuario = {
+          nome: "tito",
+          idade: 50,
+          sexo: "macho"
+      }
+
+      ////imprimeUsuario(usuario);
+
+      //console.log(Object.keys(usuario)); // Array(3)["nome", "idade", "sexo"]
+      //console.log(Object.values(usuario)); //Array(3) [ "tito", 50, "macho" ] 
+
+      //for (var i = 0; i < Object.keys(usuario).length; i++) {
+      //    console.log("chave " + Object.keys(usuario)[i] , " valor ",Object.values(usuario)[i] );
+      //}
+
+      //for (var item of Object.keys(usuario)) {
+      //    console.log("chave2 " +item + " valor " +usuario[item]);
+      //}
+
+      //for (var item in Object.keys(usuario)) { // no for in pro Object.keys o item vai ser a posição da prop. dentro do objeto usuario ( 0,1,2)
+      //    console.log("chave3 " + Object.keys(usuario)[item] + " valor " + Object.values(usuario)[item] );
+      //}
+
+      // Ou posso simplesmente usar o for in interando o próprio objeto
+      var usuarray = Object.values(usuario);
+      console.log(usuarray);
+
+      for (var item in usuarray) { // como é um array, o item é apenas o índice do array
+          console.log( "valor " + usuarray[item]);
+      }
+
+      for (var item in usuario) { // como é um objeto,  agora o item é a própria key (nome,idade e sexo)
+          console.log("chave4 " + item + " valor " + usuario[item]);
+      }
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>

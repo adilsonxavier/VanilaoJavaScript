@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+
+  
+
+</head>
+<body>
+    <form action="index.html" id="loginform">
+        Login <input type="text" id="mame" name="name" /><br />
+        senha <input type="text" id="idsenha" name="senha" /><br />
+        <button type="submit">Enviar</button>
+
+    </form>
+    <script>
+        /*
+     
+
+       
+*/
+
+        const form = document.querySelector("#loginform");
+        form.addEventListener("submit",
+            function (event) {
+                event.preventDefault(); // Impede que seja dado refresh da página
+                let nome = form.elements["name"].value;
+                let senha = form.senha.value;
+
+                var user = {
+                    name: nome,
+                    password: senha
+                }
+
+                fetch("http://localhost:32291/v1/account/login", {
+                    method: 'post',
+                    headers: new Headers({
+                        'Content-Type': 'application/json'
+                    }),
+                    body: JSON.stringify(user)
+                })
+                    .then((response) => {
+                        if (!response.ok) {
+                            let erropego;
+                            var meuJson = response.json();
+                            //meuJson.then((novoJson) => { throw Error(novoJson.message) });
+                               // catch((erro) => alert("primeiro catch " + erro));
+                            var retorno = meuJson.then((novoJson) => { return novoJson.message } );
+                            //var mensagem = meuJson.then((meuJson) => {
+                            //    return meuJson.message;
+                            //})
+                         
+                            //alert(mensagem);
+                            //meuJson.then((meujson) => {erropego = "sdfsa"+ meujson});
+                            //meuJson.then((x) => erropego = x.;
+
+                            /* var meuJson = response.json();*/
+                            /*var mensagem = meuJson.message;*/
+                            //meuJson.then((x) => { throw Error(" erro linha 48 "+x.message) })
+                            //    .catch((erro) => alert("erro linha 49 " + erro));
+                            //throw Error("thow " + response.statusText + "- " + mensagem);
+                          //  throw Error("segundo catch");
+                        }
+                        return response;
+                    })
+                    .then((response) => alert("ok linha 56"))
+                    .catch((erro) => alert("1504 "+ erro));
+
+                ///////////////
+                //fetch("http://localhost:32291/v1/account/login", {
+                //    method: 'post',
+                //    headers: new Headers({
+                //        'Content-Type': 'application/json'
+                //    }),
+                //    body: JSON.stringify(user)
+                //})
+                //    .then((response) => {
+                //        if (!response.ok) {
+                //            var meuJson = response.json();
+                //            /*var mensagem = meuJson.message;*/
+                //            meuJson.then((x) => { throw Error(" erro linha 48 "+x.message) })
+                //                .catch((erro) => alert("erro linha 49 " + erro));
+                //            //throw Error("thow " + response.statusText + "- " + mensagem);
+                //           // throw Error("thow " + meuJson)
+                //    }
+                //    return response;
+                //})
+                //   // .then((response) => alert("then : "+ response.status + " - " + response.statusText))
+                //    .then((minharesponse) => minharesponse.json())
+                //    // .then((raiz) => raiz.data.length)
+                //    .then((meuJson) => alert("meu token " + meuJson.token + " " + meuJson.message))
+                //    .catch((error) => alert(`deu erro0534 ${error}`));
+                ////////////
+
+                //fetch("http://localhost:32291/v1/account/login", {
+                //    method: 'post',
+                //    headers: new Headers({
+                //        'Content-Type': 'application/json'
+                //    }),
+                //    body: JSON.stringify(user)
+                //})
+                //   // .then((response) => alert("then : " + response.status + " - " + response.statusText))
+                //    .then((minharesponse) => minharesponse.json())
+                //    .then((meuJson) => alert("meu token " + meuJson.token + " " + meuJson.message));
+            }
+
+        );
+
+        //fetch("http://httpstat.us/500")
+        //    .then(function (response) {
+        //        if (!response.ok) {
+        //            throw Error(response.statusText);
+        //        }
+        //        return response;
+        //    }).then(function (response) {
+        //        console.log("ok");
+        //    }).catch(function (error) {
+        //        console.log(error);
+        //    });
+
+
+    </script>
+</body>
+</html>

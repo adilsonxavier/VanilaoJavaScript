@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+
+        
+        // Aqui o Closure simula uma propriedade privada n acessível pelo "metodo" ( function ) getNome()
+        function Imprimenome() {
+            minhaglobal = "sou global";
+            let n = "titoaaffb xa";
+            return {
+                getNome() {  // mas o getNome() precisa estar dentro do retur e sem a palavra function pra poder ser acessado na 
+                    return n;  // linha 25
+                }
+             }
+            //console.log(getNome());
+          //  return 4;
+        }
+
+        //Imprimenome();
+ 
+        var imp = Imprimenome(); // minhaGlobal definida dentro da function já está iniciada mesmo com o var ou let desta linha
+        console.log("glob " + imp.getNome());
+        //console.log("valor de n "+ imp.getNome());
+        
+
+
+        
+        function MinhaBiblioteca() {
+            a = { prop1: 5, prop2: 3, prop3: 2 }
+            console.log(a);
+            function auxiliar(valor) { // Aqui auxiliar() se porta como uma função privada , só visível dentro de MinhaBiblioteca()
+                return 10 +valor;
+            }
+            return {
+                add5() {                    // Aqui add5() como é retornada se porta como uma função publica e que tem acesso a função privada
+                    return auxiliar(5)      // auxiliar() por que add5() está dentro da mesma funcao  MinhaBiblioteca()
+                },                          // embora add() seja uma function, como ela está dentro de um return, se for function add()
+                add7() {                    // dá erro.
+                    return auxiliar(7)      // Repare que os métodos dentro de return são separados por vírgula;
+                },
+                geta() {
+                    return a
+                }
+            }
+        }
+
+        var biblioteca = MinhaBiblioteca();
+        console.log(biblioteca); // Object { add5: add5(), add7: add7() }
+        console.log(biblioteca.add5()); // 15
+        console.log(biblioteca.add7()); // 17
+        console.log(biblioteca.geta().prop2);
+        console.log("prop 3 "+biblioteca.geta()["prop3"]); // Repare que quando o nome da propriedade for uma string , vem sem ponto e entre []
+        //console.log(auxiliar(23));
+        //console.log(biblioteca.auxiliar(9)); // Uncaught TypeError: biblioteca.auxiliar is not a function
+                                             // Ou seja , auxiliar() não está visível aqui de fora
+
+        
+
+        /*
+        function imprimeNomeCompleto1(nome) {
+            console.log(nome, " xavier");
+        }
+
+        function imprimeNomeCompleto2(nome) {
+            return function () { console.log(nome, " xavier"); };
+        }
+
+        function inicializa() {
+            let nome = "adilson";
+            console.log("antes");
+
+            setTimeout(imprimeNomeCompleto1(nome), 2000); // Aqui imprimeNomeCompleto1 é executada imediatamente( não espera os 2 segundos )
+            // por que   imprimeNomeCompleto1 não retorna nada e o setTimeout espera que seja 
+            // retornada uma function                          
+
+            setTimeout(imprimeNomeCompleto2(nome), 2000); // Já aqui imprimeNomeCompleto2 este sim, retorna uma function e espera para
+                                                          // ser executada
+
+            setTimeout(function () {console.log(nome, " de souza") }, 3000);
+        }
+
+        inicializa();
+        */
+    </script>
+</head>
+<body>
+
+</body>
+</html>

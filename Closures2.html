@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+
+        function pai() {
+            var x = 1;
+            function filho() {
+                console.log(x);
+                x++;
+            }
+            return filho;
+        }
+
+        // Assim nao funciona:
+        //function pai() {
+        //    var x = 1;
+        //    return {
+        //        filho() {
+        //            console.log(x);
+        //            x++;
+        //        }
+        //    }
+        //}
+
+        var contador = pai();  // a variável contador vai guardar o retorno da function pai ( que no caso é a função filho)
+                               // este simples fato de atribuir filho() a uma variável faz com que ela ( assim como a função
+                               // pai ) sejam necessárias e o valor de x não é zerado pelo garbage colector
+                               // com isso o valor de x fica persistente e com isso cada vez que o contador() é chamado abaixo
+                               // o valor de x é acrescentado em + 1
+
+
+        contador();    // 1
+        contador();    // 2
+        contador();    // 3
+    </script>
+</head>
+<body>
+
+</body>
+</html>

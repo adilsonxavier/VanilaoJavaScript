@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        //const sobr = { type: "pudim" ,gosto:"doce"};
+        //sobr.type = "torta";
+
+        //console.log(Object.values(sobr)[1]);
+        //console.log(JSON.stringify(sobr));
+
+        //const nome = "adilson";
+        //nome = "claudia";
+        //console.log(nome);
+
+        /*
+        var a = [1, 2, 3];
+        console.log(a.constructor);
+
+        b = new Date();
+        console.log(b.constructor);
+
+        console.log(b.constructor.toString().toLowerCase().indexOf("date") > -1 ? "data" : "outro tipo");
+        */
+        /*
+        var v = 1;
+        var f1 = function () {
+            console.log(v);
+        }
+
+        var f2 = function () {
+            var v = 2;
+            f1();
+        }
+
+        f2();
+        */
+        //"adilson";
+      //  "use strict";
+        /* x = 34;*/
+
+        /*
+        function logThis() {
+            this.desc = "logger";
+            console.log(this);
+        }
+
+       new logThis();
+       */
+        /* Não funciona ( couter será sempre 1)
+        function add() {
+            let counter = 0;
+            function plus() { counter += 1; }
+            plus();
+            return counter;
+        }
+        console.log(add());
+        console.log(add());
+        */
+
+
+
+        const add = (function () {
+            let counter = 0;
+            return function () { counter += 1; return counter }
+        })();
+
+        console.log(add());
+        console.log(add());
+        console.log(add());
+
+        console.log(counter); //da erro
+
+        //add();
+        //add();
+        //add();
+
+        //setTimeout(imprime(), 3000); // se informar o metodo callback com parenteses ele é executado imediatamente
+        //setTimeout(imprime, 3000);
+        //function imprime() {document.write("xavier")}
+        //console.log(person("Jill", "Wilson"));
+        //const person = (firstName, lastName) => {
+        //    (
+        //        first: firstName,
+        //        last: lastName
+        //    )
+        //}
+
+
+        const name = 'Rachel';
+        const age = 31;
+        const person = { name, age };
+        console.log(person);
+    </script>
+</head>
+<body>
+    <h2>JavaScript setInterval()</h2>
+
+    <p>Using setInterval() to display the time every second (1000 milliseconds).</p>
+
+    <h1 id="demo"></h1>
+
+    <script>
+        //setInterval(myFunction, 1000);
+
+        //function myFunction() {
+        //    let d = new Date();
+        //    document.getElementById("demo").innerHTML =
+        //        d.getHours() + ":" +
+        //        d.getMinutes() + ":" +
+        //        d.getSeconds();
+        //}
+    </script>
+
+</body>
+
+</html>

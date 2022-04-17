@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script >
+        function meutarget(e) {
+            document.write(e+"<br/>");//[object Event]
+            document.write(e.target+"<br/>"); //[object HTMLInputElement]
+            document.write(e.target.nodeName+"<br/>"); //INPUT
+            document.write(e.target.value+"<br/>");
+            document.write(e.target.name+"<br/>");
+        }
+
+    </script>
+
+</head>
+<body>
+   <textarea type="text" name="meuinputn" id="meuinputi" value="tito" onchange="meutarget(event)"></textarea>
+    <button name="meubotão" onclick="meutarget(event)"> aaa</button>
+</body>
+</html>

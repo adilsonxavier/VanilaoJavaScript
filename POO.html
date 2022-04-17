@@ -1,0 +1,127 @@
+﻿ <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        //let p1 = criarPessoa("tito", 50);
+
+        //function criarPessoa(_nome,_idade) {
+        //   let pessoa = { nome: _nome,idade : _idade };
+        //   return pessoa; // return é obrigatorio em uma função que cria um objeto
+        //}
+
+       
+
+        //console.log("pessoa: " + p1.nome + " idade "+p1.idade);
+
+       //  Criando uma "classe"
+        //function Pessoa(_nome, _idade = 50) { // idade é um parâmetro opcional com valor default : 50
+        //    this.nome = _nome;
+        //    this.idade = _idade;
+        //}
+
+        //let pessoa1 = new Pessoa("maysa");
+        //let pessoa2 = new Pessoa("henrique",25);
+
+        //console.log(pessoa1);
+        //console.log(pessoa2);
+
+
+
+        // Criar uma classe de verdade
+
+       // class Pessoa
+       // {
+       //     constructor(_nome, _sobrenome, _email) {
+       //         this.nome = _nome;
+       //         this.sobrenome = _sobrenome;
+       //         this.email = _email;
+       //     };
+
+
+       //     nomeCompleto() { return this.nome + " " + this.sobrenome };
+       // }
+
+       //// //IMPORTANTE: Diferente de uma function, só posso instanciar a classe depois que ela estiver declarada, então só o código abaixo
+       //// //estivesse antes da criação da classe geraria erro
+       // p1 = new Pessoa("adilson", "xavier", "axs@gmail");
+
+       //console.log(p1.nomeCompleto());
+
+       // class Pessoa2 {
+       //     constructor(_nome, _sobrenome, _email, _idade = 50) {
+       //         this.nome = _nome;
+       //         this.sobrenome = _sobrenome;
+       //         this.email = _email;
+       //         this.idade = _idade
+       //     }
+
+
+       //     nomeCompleto() { return this.nome + " " + this.sobrenome }
+       // }
+
+       // p2 = new Pessoa2("sapa","","",17);
+       // console.log(p2.nome + " -" + p2.idade);
+
+       // let Matematica2 = { valor1: 10, somar: function (a, b) { return a + b } };
+       // console.log(Matematica2.valor1);
+
+       // let Matematica3 = { valor1: 15, subtrair: (a, b) => a - b };
+       // console.log(Matematica3.valor1+"<br/>");
+       // console.log(Matematica3.subtrair(17, 4));
+
+       // Get e set
+
+        class Boletim {
+            constructor(participacao, prova, trabalho) {
+                this.participacao = participacao;
+                this.prova = prova;
+                this.trabalho = trabalho;
+            }
+            get media() {   // com a função media() vira a prop. media então  console.log(boletimSemestral.media) 
+                            // e não console.log(boletimSemestral.media())  => não preciso dos parenteses para médoa
+                return parseInt((this.participacao + this.prova + this.trabalho) / 3)
+               // return this.participacao;
+            }
+        }
+
+        let boletimSemestral = new Boletim(8, 6, 7.5)
+        console.log(boletimSemestral.media) //7
+
+        class Aluno {
+            constructor(nome, curso, semestre) {
+                this.nome = nome,
+                this.curso = curso,
+                this.semestre = semestre
+            }
+            get nomeAluno() {
+                return this.nome
+            }
+            set nomeAluno(nomeAluno) {  // O set tem que ter um nome difereten
+                                        //( nomeAluno ) da prop que ele modifica (nome)
+                this.nome = nomeAluno
+            }
+        }
+
+        let lucas = new Aluno('', 'Engenharia', 5)
+        lucas.nomeAluno = 'Lucas'
+        //lucas.nome = "adilson";
+        console.log(lucas.nome) //Lucas
+
+        let adilson = new Aluno();
+        adilson.nomeAluno = "Adilson";
+        adilson.curso = "ads";
+        console.log(Object.values(adilson));
+
+        let alunoerrado = new Aluno("dsfsa", "fgh", "sdfdsfsa", "dsfaquarto"); // Não tem construtor com 4 args mas não da erro 
+                                                                                // simplesmente o 4 arg é ignorado
+        console.log(alunoerrado);
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

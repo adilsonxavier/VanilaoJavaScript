@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        company = {
+            name: "ACME Corp",
+            address: "Nowhere st",
+            street: "ubaldo pinto",
+            num: 789,
+            products: {
+                shirts: {
+                    colors: ["red", "green", "blue"]
+                },
+                socks: {
+                    coresmeias: ["cyan", "magenta", "yellow"]
+                },
+                camiseta: "regata"
+            }
+        };
+
+        //var companyName = company.name;
+        //var shirtsColors = company.products.shirts.colors;
+
+        //console.log(companyName); // 'ACME Corp'
+        //console.log(shirtsColors); // [‘red’, ‘green’, ‘blue’]
+
+        //console.log("----------------------- ");
+        // Ns Desestruturação de objeto são criados varíáves com os mesmos nomes dos elementos desde que ele tenha valor(es) depois dos 2 pontos
+        // e desde que estes valores não sejam outros objetos
+        // Então Products, shirts e socks ficarão como indefined
+        var { name, products: { shirts: { colors }, camiseta } } = company
+       // Obs: não uso a propriedade pai var { company:{....}} senão dá erroUncaught TypeError: company.company is undefined
+       // const { products: { socks: { coresmeias },  camiseta} } = company;
+
+        console.log(name); // 'ACME Corp'
+        console.log(colors); // [‘red’, ‘green’, ‘blue’]
+       // console.log("meias " + socks);
+
+        console.log("cores camisetas" + colors);
+        //console.log(products);
+        console.log("segunda camiseta " + colors[1]); // green
+        console.log("camiseta " + camiseta);
+
+        //deixandoo a variável com nome diferente da propriedade
+        const { street : minhaRua } = company;
+        console.log("minha rua " + minhaRua);
+
+        var { name, products: { shirts: { colors: coresdascamisetas }, camiseta } } = company
+
+        console.log("cores camisetas 2" + coresdascamisetas);
+
+        //Posso também criar um valor default para caso a propriedade não exista com o =
+        var { products: { camiseta, minhaprop = "qualquer coisa" } } = company; // regata   qualquer coisa
+        console.log(camiseta, " ", minhaprop);
+
+        // Com functions
+        function imprimeUsuario({ nome, idade, sexo = "m" }) { // obj usuario não tem prop sexo, foi criado valor default = "m"
+            console.log(nome);
+            console.log(idade);
+            console.log(sexo);
+        }
+
+        var usuario = {
+            nome: "tito",
+            idade:50
+        }
+
+        imprimeUsuario(usuario)
+        // com arrays
+
+        // como array não tem nome de propriedade, as variáveis criadas podem ter qualquer nome e obedecem a sequencia dos itens do array
+        var frutas = ["banana", "pera", "uva"];
+        var [primeira, segunda, terceira] = frutas;
+
+        console.log(segunda);
+
+        // pode pular itens colocando virgulas
+        var frutas2 = ["abacate", "limao", "goiaba"];
+        var [, s, t] = frutas2;
+        console.log(t);
+
+        // os 3 pontos seguido de um nome de variável cria um array com o conteudo destes itens que faltaram
+        var [a, ...resto] = frutas2;
+        console.log(resto); // Array [ "limao", "goiaba" ]
+
+        // com função
+
+        var frutasObj = {
+            f1 : "banana prata",
+            f2 : " jabuticaba"
+        }
+
+        function liquidificador({ f2 }) { //ao invés de receber o objeto como argumento, ja fiz a desestruturação do objeto
+                                          // dentro do próprio argumento
+            console.log(f2); // jabuticaba
+        }
+
+        liquidificador(frutasObj);
+
+        //Parametro rest
+        function parametroRest(rua, num, ...complementos) {
+            console.log(rua + ", " + num);
+            var bairro = complementos[1];
+
+            //com desestruturação de array
+            var [bairro2, cidade, estado] = complementos;
+            console.log(`var bairro ${bairro} estado ${estado}`);
+            console.log(bairro2, cidade);
+        }
+
+        parametroRest("a", 789, "tude", "PG", "sp");
+    </script>
+</head>
+<body>
+
+</body>
+</html>

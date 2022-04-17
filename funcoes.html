@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+
+       //  exemplos de função callback : função passada para outra função como parâmetro
+        let imprimeConsole = function (saida) { // a function é guardada na variável ImprimeConsole para poder ser passada como parametro da
+                                                // function somar
+            console.log(`saida imprime console ${saida}`);
+        }
+       // imprimeConsole("maysa");
+
+        //let mensagemAlert = function (saida) { // a function é guardada na variável mensagemAlert
+        //    alert(saida);
+        //}
+
+        let functionCom2parametros = function (saida, outroparametro) { // a function é guardada na variável ImprimeConsole para poder ser passada como parametro da
+                                                                         // function somar
+            console.log(`saida functionCom2parametros console ${saida} - ${outroparametro}`);
+        }
+
+        //functionCom2parametros("adilson ", "xavier");
+
+
+     //   let s1 = somar(40, 50, imprimeConsole); // a function também foi guardada em uma variável mas neste caso não precisava por que esta variável
+                                                //  não é usada 
+       // let s2 = somar(50, 50, imprimeConsole);
+        //let s3 = somar(45, 50, mensagemAlert);
+         let s4 = somar(10, 29, functionCom2parametros);
+
+        //somar(40, 50, function (saida) {
+        //    document.write("Saida de função anônimad" + saida)
+        //});
+
+        //a = 5;// só pro breakpoint
+
+        //document.write("<br/>");
+
+        // Funções anônimas
+        // ================
+
+        //(function () { document.write("funcao anonima executada imediatamente <br/>") })(); // para executar uma função anônima imediatamente ela precisa estar entre
+        //                                                                               parênteses (function(){....}) e com abre e fecha parênteses no final : ()
+        // com parâmetro
+        //var palavra = "adilson";
+        //(function () { document.write(`conteudo do parâmetro recebido : ${palavra}  <br/>`) })(palavra);
+
+        //let show = function (saida) {
+        //    document.write(`function show ${saida}<br/>`)
+        //};
+
+        // Executando uma função anônima guardada na variável show acima
+        //show("adilson</br>");
+
+       
+        function somar(n1, n2, f) {
+            let r = n1 + n2+1;
+            f(r); // guando o parâmetro f recebido é a funcao functionCom2parametros e é executado como está aqui (com um só parametro)
+            // não dá erro. Simplesmente o segundo parâmeto é passado como undefined em functionCom2parametros = function (saida, outroparametro)
+            return r;
+        }
+
+         /*
+        let s7 = somar(15, 2, function (saida) {
+            document.write(`s7 : ${saida}<br/>`);
+        });
+        */
+       
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

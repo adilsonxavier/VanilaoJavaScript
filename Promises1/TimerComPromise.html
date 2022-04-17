@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+   
+</head>
+<body>
+    <ul id="users"></ul>
+
+    <script>
+
+        //var minhaPromise = new Promise(
+        //    function (resolve, reject) {
+        //        return resolve;
+        //    }
+        //);
+
+        //minhaPromise.then(() => { alert("foi"); });
+
+        //function imprime(texto) {
+        //    setTimeout(() => { console.log(texto) }, 3000);
+        //    return texto;
+        //}
+
+        //imprime("buceta");
+
+        //function funcPromise() {
+        //    //return new Promise(function (resolve, reject) {
+        //    //    resolve({ mensagem: "texto" });
+        //    //});
+        //    return new Promise((resolve, reject) => { resolve({ mensagem: " texto mensagem" }); });
+        //}
+       
+
+        //(function executa() {
+        //    console.log("aqui");
+        //    funcPromise().then((retorno) => {
+        //        setTimeout(() => { console.log("texto1 " + retorno.mensagem) }, 3000);
+        //    }).then(() => { setTimeout(()=> { console.log("texto2");},3000) });
+        //})();
+
+        //function funcPromise() {
+        //    //return new Promise(function (resolve, reject) {
+        //    //    resolve({ mensagem: "texto" });
+        //    //});
+        //    //return new Promise((resolve, reject) => { resolve(); });
+        //    return new Promise((resolve) => { resolve(); });
+        //}
+
+
+        //function executa() {
+        //    console.log("aqui");
+        //    funcPromise().then(() => {
+        //        setTimeout(() => { console.log("texto1 ") }, 3000);
+        //    }).then(() => { setTimeout(() => { console.log("texto2.2"); }, 3000) });
+        //}
+
+        function funcPromise(texto) {
+            //return new Promise(function (resolve, reject) {
+            //    resolve({ mensagem: "texto" });
+            //});
+            return new Promise((resolve, reject) => { resolve(); });
+            //return new Promise((resolve) => {
+            //    resolve(
+            //        setTimeout(() => { console.log(texto) }, 3000));
+            //    );
+            //});
+        }
+
+        async function executa() {
+
+             await funcPromise("meutexto");
+        }
+        executa;
+
+
+
+        //let minhaPromise = new Promise(function (resolve, reject) {
+
+        //});
+    </script>
+</body>
+</html>

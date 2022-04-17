@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+
+        function div(n1, n2) {
+            return new Promise((resolve, reject) => {
+                setTimeout(function () {
+                    let d = n1 / n2;
+                    if (n2 != 0) {
+                        resolve(d);
+
+                    } else {
+                        reject("impossivel dividir por zero");
+                    }
+                }, 3000);
+
+            });
+        }
+
+        function calcularJuros(r) {
+            return new Promise((resolve, reject) => {
+                let j = r * 1.1;
+                if (r > 0) {
+                    resolve(j);
+                }
+                else
+                    reject("erro");
+            }
+            );
+        }
+
+       // let calcularJuros = (r) => r * 1.1;
+
+        //function calcularJuros(r) {
+        //    return r * 1.1;
+        //}
+
+
+        function mensagem(r) {
+/*            setTimeout(function () {*/
+                console.log("total " + r);
+      /*      }, 2000);*/
+
+        }
+
+        function erro(e) {
+            console.log(e)
+        }
+
+        async function calc() {
+            let divisao = await div(100, 2);
+            let juros = await calcularJuros(divisao);
+            mensagem(juros);
+            //let b =  await mensagem("aaa"+juros);
+            //let c = await mensagem("bbb"+ juros);
+        }
+
+        calc();
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
