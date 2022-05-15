@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        var _parameters = {
+            "info": {
+                "operacaoId": 1,
+                "atendimentoId": 38,
+                "propostaId": 38,
+                "estadoProposta": "Finalizado",
+                "usuarioId": 1,
+                "usuarioNome": "ADMSTA",
+                "usuarioLogin": "ADMSTA",
+                "dataInicio": "11/05/2022",
+                "horaInicio": "11:18"
+            },
+            "detalhesProposta": {
+                "Cadastro_Promotoras": {
+                    "dados": {
+                        "Codigo": "COD 1105 1120",
+                        "Tabela_Promotoras": {
+                            "Adicionavel": false,
+                            "Removivel": true,
+                            "config": {
+                                "pageSize": 20,
+                                "allowFiltering": false,
+                                "exportEnabled": true,
+                                "filtering": false,
+                                "wordWrapEnabled": true,
+                                "width": "100%"
+                            },
+                            "Colunas": [
+                                {
+                                    "dataField": "CODIGO",
+                                    "caption": "CODIGO",
+                                    "allowEditing": false,
+                                    "dataType": "string"
+                                },
+                                {
+                                    "dataField": "PROMOTORA",
+                                    "caption": "PROMOTORA",
+                                    "allowEditing": false,
+                                    "dataType": "string"
+                                }
+                            ],
+                            "Dados": [
+                                {
+                                    "ID": 2,
+                                    "CODIGO": "cod",
+                                    "PROMOTORA": "promotorra"
+                                },
+                                {
+                                    "ID": 1,
+                                    "CODIGO": "cod 1457",
+                                    "PROMOTORA": "prom 1457"
+                                },
+                                {
+                                    "ID": 5,
+                                    "CODIGO": "cod 1549",
+                                    "PROMOTORA": "maria 1549"
+                                }
+                            ]
+                        },
+                        "Promotora": "PROM 1105 1120"
+                    }
+                }
+            },
+            "modulos": [
+                {
+                    "nome": "Cadastro_Promotoras",
+                    "dados": {
+                        "Codigo": "COD 1105 1120",
+                        "Tabela_Promotoras": {
+                            "Adicionavel": false,
+                            "Removivel": true,
+                            "config": {
+                                "pageSize": 20,
+                                "allowFiltering": false,
+                                "exportEnabled": true,
+                                "filtering": false,
+                                "wordWrapEnabled": true,
+                                "width": "100%"
+                            },
+                            "Colunas": [
+                                {
+                                    "dataField": "CODIGO",
+                                    "caption": "CODIGO",
+                                    "allowEditing": false,
+                                    "dataType": "string"
+                                },
+                                {
+                                    "dataField": "PROMOTORA",
+                                    "caption": "PROMOTORA",
+                                    "allowEditing": false,
+                                    "dataType": "string"
+                                }
+                            ],
+                            "Dados": [
+                                {
+                                    "ID": 1,
+                                    "CODIGO": "cod",
+                                    "PROMOTORA": "promotorra"
+                                },
+                                {
+                                    "ID": 2,
+                                    "CODIGO": "cod 1457",
+                                    "PROMOTORA": "prom 1457"
+                                },
+                                {
+                                    "ID": 3,
+                                    "CODIGO": "cod 1549",
+                                    "PROMOTORA": "maria 1549"
+                                }
+                            ]
+                        },
+                        "Promotora": "PROM 1105 1120"
+                    },
+                    "aprovadoModuloPerguntas": null,
+                    "decisaoSelecionada": null,
+                    "decisaoSelecionadaRotulo": "",
+                    "decisaoViaFluxo": null,
+                    "acertouToken": null,
+                    "titulo": null,
+                    "texto": null,
+                    "classe": null,
+                    "perguntas": []
+                },
+                {
+                    "nome": "FInalizar",
+                    "dados": {},
+                    "aprovadoModuloPerguntas": null,
+                    "decisaoSelecionada": null,
+                    "decisaoSelecionadaRotulo": "",
+                    "decisaoViaFluxo": null,
+                    "acertouToken": null,
+                    "titulo": null,
+                    "texto": null,
+                    "classe": null,
+                    "perguntas": []
+                }
+            ]
+        }
+
+        // console.log( " dadosPromotoras "+ JSON.stringify(dadosPromotoras));
+        _codigo = _parameters.detalhesProposta.Cadastro_Promotoras.dados.Codigo;
+        _promotora = _parameters.detalhesProposta.Cadastro_Promotoras.dados.Promotora;
+        _idsAtuais = [1, 2, 3, 4, 5, 6]; // buscar do banco
+       // _idsRemanescentes = [2,1,3];//_parameters.detalhesProposta.Cadastro_Promotoras.dados.Tabela_Promotoras.Dados;
+       // let _idsRemanescentes= [];
+        let _arraycontrole = []
+        console.log(JSON.stringify(_parameters.detalhesProposta.Cadastro_Promotoras.dados.Tabela_Promotoras.Dados));
+       _idsRemanescentes = _parameters.detalhesProposta.Cadastro_Promotoras.dados.Tabela_Promotoras.Dados
+                          .map( item => _arraycontrole.push(item.ID));
+    //    idsrem = _idsRemanescentes.map( item => idsrem.push(item.ID));
+    //    console.log("_idsrem "+ idsrem);
+         console.log("_idsRemanescentess "+ _arraycontrole);
+        // console.log(_idsRemanescentes[1].CODIGO);
+        let _idsAExcluir =  _idsAtuais.filter(x => !_idsRemanescentes.includes(x));
+
+        console.log("_idsAExcluir "+ _idsAExcluir); //[5, 6, 7, 5]
+
+
+        // var { modulos:} = dadosPromotoras;
+        // console.log("cod prom " + _codigo);
+        // console.log("_idsRemanescentes " + _idsRemanescentes);
+        //var { name, products: { shirts: { colors }, camiseta },street } = company
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

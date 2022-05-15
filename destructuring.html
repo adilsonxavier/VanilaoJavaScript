@@ -19,7 +19,20 @@
                 camiseta: "regata"
             }
         };
+        var  {name,address,...outros }  = company;
+        console.log("outros " + JSON.stringify(outros)); //json começando do street
 
+        // var  {data }  = company;
+        // console.log("data " + JSON.stringify(data.street));
+
+        chamadata(1,company);
+        
+
+        function chamadata(minhavar, data)
+        {
+            var meusdados = {...data};
+            console.log("chamadata "+ meusdados.address); // Nowhere st
+        }
         //var companyName = company.name;
         //var shirtsColors = company.products.shirts.colors;
 
@@ -30,7 +43,7 @@
         // Ns Desestruturação de objeto são criados varíáves com os mesmos nomes dos elementos desde que ele tenha valor(es) depois dos 2 pontos
         // e desde que estes valores não sejam outros objetos
         // Então Products, shirts e socks ficarão como indefined
-        var { name, products: { shirts: { colors }, camiseta } } = company
+        var { name, products: { shirts: { colors }, camiseta },street } = company
        // Obs: não uso a propriedade pai var { company:{....}} senão dá erroUncaught TypeError: company.company is undefined
        // const { products: { socks: { coresmeias },  camiseta} } = company;
 
@@ -43,6 +56,9 @@
         console.log("segunda camiseta " + colors[1]); // green
         console.log("camiseta " + camiseta);
 
+        //const {street} = company;
+        console.log("minha street " +street);
+
         //deixandoo a variável com nome diferente da propriedade
         const { street : minhaRua } = company;
         console.log("minha rua " + minhaRua);
@@ -54,7 +70,7 @@
         //Posso também criar um valor default para caso a propriedade não exista com o =
         var { products: { camiseta, minhaprop = "qualquer coisa" } } = company; // regata   qualquer coisa
         console.log(camiseta, " ", minhaprop);
-
+/*
         // Com functions
         function imprimeUsuario({ nome, idade, sexo = "m" }) { // obj usuario não tem prop sexo, foi criado valor default = "m"
             console.log(nome);
@@ -75,18 +91,18 @@
         var [primeira, segunda, terceira] = frutas;
 
         console.log(segunda);
-
+*/
         // pode pular itens colocando virgulas
         var frutas2 = ["abacate", "limao", "goiaba"];
         var [, s, t] = frutas2;
-        console.log(t);
+        console.log("frutas2 "+ t);
 
         // os 3 pontos seguido de um nome de variável cria um array com o conteudo destes itens que faltaram
         var [a, ...resto] = frutas2;
-        console.log(resto); // Array [ "limao", "goiaba" ]
+        console.log("resto "+ resto); // Array [ "limao", "goiaba" ]
 
         // com função
-
+/*
         var frutasObj = {
             f1 : "banana prata",
             f2 : " jabuticaba"
@@ -111,6 +127,7 @@
         }
 
         parametroRest("a", 789, "tude", "PG", "sp");
+        */
     </script>
 </head>
 <body>
