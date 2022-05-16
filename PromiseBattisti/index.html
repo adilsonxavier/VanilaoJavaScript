@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script>
+
+        //  const imprime = valor=> console.log(valor);
+        //    function imprime(valor){
+        //         console.log(valor);
+        //    }
+
+        const minhaPromise = new Promise((resolve,reject) => {
+            const nome = "tito";
+            if (nome === "tito") {
+                //imprime("é o titooo"); O simples ato de instanciar a promise já executa esta linha mesmo
+                // que a promise ainda não tenha sido chamada 
+                resolve("é o titooo");
+            }
+            else {
+
+                reject("tito não encontrado");
+                //Se chamar a Promise sem um catch , gera um erro no console com a mensagem
+                // "Uncaught (in promise) tito não encontrado"
+                // Com não gera erro e a mensagem é "o erro foi : tito não encontrado"
+            }
+        }
+        );
+
+
+
+        // minhaPromise.then((data) => {
+        //     console.log(data);
+        // })
+        //     .catch(error =>
+        //         console.log("o erro foi : " + error)
+        //     );
+        // ;
+
+        // Encadeando thens
+        const minhaPromise2 = new Promise((resolve, reject) => {
+            const nome = "tito";
+            if (nome === "tito") {
+                resolve("é o titooo");
+            }
+            else {
+
+                reject("tito não encontrado");
+            }
+        }
+        );
+        let retornoPromise = "ss";
+
+        minhaPromise2.then(data => data.toUpperCase())
+        .then((stringmodigicada)=> {retornoPromise=stringmodigicada});//{resultado=stringmodigicada})
+        console.log(`o retornoPromise é ${retornoPromise}`); //Vai imprimir "o resultdo é ss" (o retornoPromise) não foi alterado
+                                                       // por que, como o javascript é sincrono, a atribuição 
+                                                       // retornoPromise=stringmodigicada foi executado quando a promise ainda 
+                                                       // não tinha sido resolvida.
+                                                       // Por isso pres
+
+         (async () => { retornoPromise = await minhaPromise2}) ()  ;   
+        console.log((`o retornoPromise agora é ${retornoPromise}`))                                                 
+
+
+        // Resolver várias promessas
+        const p1 = new Promise((resolve)=>{
+            resolve("P1 ok");
+        });
+
+        const p2 = new Promise((resolve)=>{
+            resolve("P2 ok");
+        });
+        
+        const p3 = new Promise((resolve)=>{
+            resolve("P3 ok");
+        });
+
+        const resolveAll = Promise.all([p1,p2,p3]) // Repare que all() é um método estático da classe
+                                                   // Promise e recebe um array de promises
+        .then((data)=> data);
+
+     //   console.log(data);
+    </script>
+
+
+</head>
+
+<body>
+
+</body>
+
+</html>

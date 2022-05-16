@@ -1,24 +1,65 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <title></title>
     <script>
-        let p = new Promise(function (resolve, reject) {
-            let result = 1 + 3;
+        // function exemplo(item) {
+        //     return new Promise((resolve) => {
+        //         setTimeout(() => resolve(item), 500);
+        //     });
+        // }
+
+        // function minhaPromise(result) {
+        //     // let p = new Promise(function (resolve, reject) {
+        //     return new Promise(function (resolve, reject) {
+        //        // let result = 1 + 1;
+        //         if (result == 2) {
+        //             console.log(`resultado s ${result}`);
+        //             successCallBack();
+        //             /* resolve("sucesso");*/
+        //         }
+        //         else {
+        //             console.log(`resultado e ${result}`);
+        //             errorCallBack();
+        //             /*reject("falha");*/
+        //         }
+        //     }
+        //     );
+
+        // }
+        
+       // minhaPromise(2);
+
+       let minhaPromise = new Promise((resolve,reject)=>{
+           const nome = "tito";
+           if(nome === "tito"){
+            console.log("é o tito");
+           }
+           else{
+            console.log("tito não encontrado");
+           }
+       }
+       );
+
+        let p = new Promise( (resolve, reject) => {
+            let result = 1 + 1;
             if (result == 2) {
-                successCallBack();
-               /* resolve("sucesso");*/
+                console.log(`resultado s ${result}`);
+               // successCallBack();
+                /* resolve("sucesso");*/
             }
             else {
-                errorCallBack();
+                console.log(`resultado e ${result}`);
+                //errorCallBack();
                 /*reject("falha");*/
             }
         }
         );
 
-        //p.then((mensagem) => console.log("Ok then - " + mensagem))
-        //    .catch((errorMessage) => console.log("erro catch - "+ errorMessage));
+        // p.then((mensagem) => console.log("Ok then - " + mensagem))
+        //     .catch((errorMessage) => console.log("erro catch - " + errorMessage));
 
         //function sumNumbers() {
         //    let result = 1 + 1;
@@ -30,17 +71,19 @@
         //    }
         //}
 
-        function successCallBack() {
-            console.log("Okdo callbaqck ");
-        }
+        // function successCallBack() {
+        //     console.log("Okdo callbaqck ");
+        // }
 
-        function errorCallBack() {
-            console.log("erro do callBack ");
-        }
+        // function errorCallBack() {
+        //     console.log("erro do callBack ");
+        // }
         //sumNumbers();
     </script>
 </head>
+
 <body>
 
 </body>
+
 </html>
