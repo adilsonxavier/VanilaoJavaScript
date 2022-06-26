@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+
+        var numeros = [7, 8, 9, 10, 11, 12, 13];
+        var total = numeros.reduce((acumulador, numero, indice, original) => {
+            // A
+            console.info(`${acumulador} total até o momento`);
+            console.log(`${numero} valor atual`);
+            // numero (segundo parâmetro) é o valor atual do array numeros( começa com 7)
+            console.log(`${indice} indice atual`);
+            console.log(`${original} array original`);
+            // original (quarto parâmetro) = array numeros e mantém o valor em todas as interações ,neste exemplo
+            return acumulador += numero; // O return atualiza o valor de acumulador para a próxima interação,
+            //Sem o return só a primeira interação vai imprimir o valor inicial de acumulador(15) mas nas
+            // interações seguintes acumulador aparece como undefined
+
+        }, 15)  // 15 é o valor inicial da variável acumulador (primeiro parâmetro da função)
+        // sem este parâmetro o valor inicial de acumulador vai ser o primeiro valor do array (7)
+        console.warn('acaboooou');
+        // No fim do loop, total vai ter o valor de acumulador
+        console.log(total)
+
+        console.log("================");
+        const a = [1, 2, 3]; //(soma 6)
+        const b = [4, 5, 6,]; //soma 15
+        var ab = a.reduce((acumulador, elemento) => acumulador += elemento, // não precisa return aqui
+            b.reduce((acumulador, elemento) => acumulador += elemento, 0));
+        // Neste exemplo, o valor inicial(acumulador) no a.reduce é o resultado do b.reduce (15)
+        console.log(ab); // 21
+
+        console.log("================");
+        console.log("======bichos==========");
+        animais = [
+            {
+                nome: 'Fumaça',
+                idade: 3,
+                tipo: 'cao'
+            },
+            {
+                nome: 'Tobby',
+                idade: 6,
+                tipo: 'cao'
+            },
+            {
+                nome: 'Laminha',
+                idade: 1,
+                tipo: 'gato'
+            },
+            {
+                nome: 'Nutella',
+                idade: 3,
+                tipo: 'cao'
+            },
+        ];
+
+        // gato = [];
+        // cao = [];
+        // bicho =  {
+        //         nome: 'Nutella',
+        //         idade: 3,
+        //         tipo: 'cao'
+        //     }
+        // cao.push(bicho);
+        // console.log("bicho"+ JSON.stringify( cao));
+        ac = {}
+        animaisSeparados = animais.reduce((ac,bichoatual,indice)=>{
+            if(ac[bichoatual.tipo]) console.log("existe");
+            console.log("ba "+bichoatual.tipo+ " ind "+indice);
+            ac[bichoatual.tipo].push(bichoatual);
+            return ac;
+
+         },{cao:[],gato:[]});
+        
+
+        console.log("gatos"+JSON.stringify(animaisSeparados.gato));
+        console.log("caos"+ JSON.stringify(animaisSeparados.cao));
+
+        console.log("================");
+
+        /*
+        soCao = animais.filter((animal) => animal.tipo === 'cao');
+        console.log(soCao); //Fumaça,Tobby, Nutella
+
+        soCaoIdades = soCao.map((cao) => cao.idade);
+        console.log(soCaoIdades); //[3, 6, 3]
+
+        soCaoIdadesSoma = soCaoIdades.reduce((total, idadeCaoAtual) => {
+            return total += idadeCaoAtual
+        });// Sem valor inicial. Val inicial da var total = 3(idade do cao indice 0)
+
+        console.log(soCaoIdadesSoma); // 12
+
+        // Abaixo faz a mesma coisa
+        dogsAgeSum = animais.filter((animal) => animal.tipo === 'cao')
+            .map((cao) => cao.idade)
+            .reduce((total, cao) => total += cao)
+
+        console.log(dogsAgeSum);   // 12
+
+        dogsAgeSum2 = animais.reduce((total, elemento) => {
+            console.log(elemento); // cao,cao,gato,cao
+            if (elemento.tipo === 'cao') return total += (elemento.idade); // só acumula idade se for cao
+            else return total // se for gato só retorna o valor atual para a próxima interação . sem acumular
+        }, 0);
+
+        console.log(dogsAgeSum2);   // 12
+
+        console.log("================");
+        console.log("================");
+
+        const lista = [
+            { id: 1, nome: "gol" },
+            { id: 2, nome: "ferrari" },
+            { id: 3, nome: "camaro :)" }
+        ];
+        const callback = (acumulador, valor) => {
+            acumulador[valor.id] = valor.nome
+            console.log(`acumulador[valor.id]:: ${valor.id} ;; valor.nome:: ${valor.nome}`);
+            return acumulador
+        };
+        const valorInicial = {};
+        const carrosIndexadosPorId = lista.reduce(callback, valorInicial);
+        //const carrosIndexadosPorId = lista.reduce(callback);
+        console.log(carrosIndexadosPorId[3]) //camaro :)        
+        */b
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

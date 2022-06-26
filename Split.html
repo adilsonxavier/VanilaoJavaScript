@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+
+        let listapromotorasmock = "007388 - CM-NORTE FIDELIZA¦007623 - ATENTO INBOUND FL";
+
+        let promotoras = listapromotorasmock.split("¦");
+        for (let promotoraitem of promotoras) {
+            let cod = promotoraitem.split(" - ")[0].trim();
+            let promotora = promotoraitem.split(" - ")[1].trim();;
+            console.log(`cod = ${cod} prom = ${promotora}`);
+            
+        }
+
+
+       // console.log(promotoras1);
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

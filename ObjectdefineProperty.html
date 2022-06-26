@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+
+animais = [
+            {
+                nome: 'Fumaça',
+                idade: 3,
+                tipo: 'gato'
+            },
+            {
+                nome: 'Tobby',
+                idade: 6,
+                tipo: 'cao'
+            },
+            {
+                nome: 'Laminha',
+                idade: 1,
+                tipo: 'pato'
+            },
+            {
+                nome: 'Nutella',
+                idade: 3,
+                tipo: 'sapo'
+            },
+        ];
+        const object1 = {};
+        // Object.defineProperty(object1, 'property1',{value:"adilson"});
+        // //object1.property1="adilson";
+        // console.log(JSON.stringify(object1.property1));
+
+        ac = []
+        animaisSeparados = animais.reduce((ac,bichoatual,indice)=>{
+            if(!ac[bichoatual.tipo]){
+                Object.defineProperty(object1, bichoatual.tipo,{value:"ssssss"});
+                ac.push(object1);
+                console.log("ba" + JSON.stringify(bichoatual.tipo));
+               console.log("ac" + JSON.stringify(ac));
+                console.log("ob "+JSON.stringify(object1[ bichoatual.tipo]));
+            } 
+            // console.log("ba "+bichoatual.tipo+ " ind "+indice);
+            // ac[bichoatual.tipo].push(bichoatual);
+            return ac;
+
+         },[]);
+        
+
+        console.log("gatos"+JSON.stringify(animaisSeparados.gato));
+        console.log("caos"+ JSON.stringify(animaisSeparados.cao));
+        console.log("caos"+ JSON.stringify(animaisSeparados.sscao));
+        // Object.defineProperty(object1, 'property1', {
+
+        //     value: 2,
+        //     value: 4,
+        //     value: 4 + 13,
+        // });
+        // object1.property1;
+        // console.log(object1.property1);  
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

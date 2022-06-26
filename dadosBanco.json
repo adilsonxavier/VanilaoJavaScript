@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "nome": "split_promotora",
+        "rotulo": "Split Promotora",
+        "descricao": "",
+        "ativa": true,
+        "ordem": 5,
+        "data_insercao": "2022-01-01T12:00:00.000Z",
+        "usuario_insercao": "ADMSTA",
+        "data_cancelamento": null,
+        "usuario_cancelamento": null
+    },
+    {
+        "id": 2,
+        "nome": "split_padrao",
+        "rotulo": "Split Padrao",
+        "descricao": "",
+        "ativa": true,
+        "ordem": 3,
+        "data_insercao": "2022-01-01T12:00:00.000Z",
+        "usuario_insercao": "ADMSTA",
+        "data_cancelamento": null,
+        "usuario_cancelamento": null
+    },
+    {
+        "id": 4,
+        "nome": "grupo regra teste 1",
+        "rotulo": "rotulo 1",
+        "descricao": "descricao 1",
+        "ativa": true,
+        "ordem": 3,
+        "data_insercao": "2022-05-16T08:43:48.526Z",
+        "usuario_insercao": "adilson",
+        "data_cancelamento": null,
+        "usuario_cancelamento": null
+    },
+    {
+        "id": 5,
+        "nome": "grupo regra teste 2",
+        "rotulo": "rotulo 2",
+        "descricao": "descricao 2",
+        "ativa": true,
+        "ordem": 4,
+        "data_insercao": "2022-05-16T08:44:19.143Z",
+        "usuario_insercao": "adilson",
+        "data_cancelamento": null,
+        "usuario_cancelamento": null
+    },
+    {
+        "id": 6,
+        "nome": "grupo regra teste 3",
+        "rotulo": "rotulo 3",
+        "descricao": "descricao 3",
+        "ativa": true,
+        "ordem": 5,
+        "data_insercao": "2022-05-16T08:45:28.256Z",
+        "usuario_insercao": "adilson",
+        "data_cancelamento": null,
+        "usuario_cancelamento": null
+    }
+]

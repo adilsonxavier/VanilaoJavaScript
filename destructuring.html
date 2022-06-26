@@ -19,6 +19,10 @@
                 camiseta: "regata"
             }
         };
+        var {products:{shirts,camiseta,...restante}} = company;
+        console.log(`shirts ${JSON.stringify(shirts)}`)
+        console.log(`restante ${JSON.stringify(restante)}`)
+
         var  {name,address,...outros }  = company;
         console.log("outros " + JSON.stringify(outros)); //json começando do street
 
@@ -43,6 +47,7 @@
         // Ns Desestruturação de objeto são criados varíáves com os mesmos nomes dos elementos desde que ele tenha valor(es) depois dos 2 pontos
         // e desde que estes valores não sejam outros objetos
         // Então Products, shirts e socks ficarão como indefined
+        /*
         var { name, products: { shirts: { colors }, camiseta },street } = company
        // Obs: não uso a propriedade pai var { company:{....}} senão dá erroUncaught TypeError: company.company is undefined
        // const { products: { socks: { coresmeias },  camiseta} } = company;
@@ -91,7 +96,7 @@
         var [primeira, segunda, terceira] = frutas;
 
         console.log(segunda);
-*/
+
         // pode pular itens colocando virgulas
         var frutas2 = ["abacate", "limao", "goiaba"];
         var [, s, t] = frutas2;

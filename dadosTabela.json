@@ -1,0 +1,32 @@
+[
+    {
+        "ID": 2,
+        "ROTULO": "Split Padrao",
+        "ORDEM": 7,
+        "ATIVA": false
+    },
+    {
+        "ID": 4,
+        "ROTULO": "rotulo 1",
+        "ORDEM": 3,
+        "ATIVA": true
+    },
+    {
+        "ID": 5,
+        "ROTULO": "rotulo 2",
+        "ORDEM": 1,
+        "ATIVA": false
+    },
+    {
+        "ID": 6,
+        "ROTULO": "rotulo 3",
+        "ORDEM": 2,
+        "ATIVA": false
+    },
+    {
+        "ID": 1,
+        "ROTULO": "Split Promotora",
+        "ORDEM": 6,
+        "ATIVA": true
+    }
+]

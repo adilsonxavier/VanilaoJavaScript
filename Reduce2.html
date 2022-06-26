@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+
+        const eps=[
+            {id: 1, eps:'nortcred'},
+            {id: 2, eps:'finalizza'},
+        ];
+
+function agruparEPS(dadosProcesso) {
+    let epssAgrupadas = [];
+    let epssUsadas = [];
+
+    dadosProcesso.reduce((acc, vlAtual, index, arr) => {
+        console.log(vlAtual.eps);
+        // if (!epssUsadas.includes(vlAtual.eps)) {
+        //     const filtroPorEPS = arr.filter((dado) => {
+        //         if (dado.eps == vlAtual.eps) {
+        //             return dado;
+        //         }
+        //     });
+
+        //     if (filtroPorEPS.length > 1) {
+        //         let lixo = [];
+        //         for (var i = 0; i < filtroPorEPS.length; i++) {
+        //             lixo = filtroPorEPS[i].dados.concat(filtroPorEPS[++i].dados);
+        //         }
+        //         epssAgrupadas.push([{ eps: vlAtual.eps, dados: lixo }]);
+        //     } else {
+        //         epssAgrupadas.push(filtroPorEPS);
+        //     }
+        //     epssUsadas.push(vlAtual.eps);
+        // }
+    }, 0);
+
+    return epssAgrupadas;
+}
+     
+agruparEPS(eps);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
