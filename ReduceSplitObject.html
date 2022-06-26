@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+
+animais = [
+            {
+                nome: 'Fumaça',
+                idade: 3,
+                tipo: 'gato'
+            },
+            {
+                nome: 'Tobby',
+                idade: 6,
+                tipo: 'cao'
+            },
+            {
+                nome: 'Laminha',
+                idade: 1,
+                tipo: 'cao'
+            },
+            {
+                nome: 'Nutella',
+                idade: 3,
+                tipo: 'gato'
+            },
+        ];
+       
+        animaisfinal=[];
+        animaisSeparados2 = animais.reduce((ac,bichoatual)=>{
+             if(!animaisfinal[bichoatual.tipo])
+             {
+                animaisfinal[bichoatual.tipo] =[];
+             }
+            animaisfinal[bichoatual.tipo].push({nome:bichoatual.nome,idade:bichoatual.idade});
+            return ac;
+
+        },[]);
+        console.log("====assss=========");
+        console.log(animaisfinal);
+
+        /* resultado:
+        Array []
+           cao: Array [ {…}, {…} ]
+           gato: Array [ {…}, {…} ]
+        */
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
