@@ -20,7 +20,7 @@ animais = [
             {
                 nome: 'Laminha',
                 idade: 1,
-                tipo: 'pato'
+                tipo: 'galo'
             },
             {
                 nome: 'Nutella',
@@ -33,10 +33,73 @@ animais = [
         // //object1.property1="adilson";
         // console.log(JSON.stringify(object1.property1));
 
-        ac = []
+        /*
+
+        ac = [];
+        Object.defineProperty(object1,"gato",{value:"borilson"});
+        console.log(JSON.stringify(object1.gato));
+        */
+
+     //   gatos =[{nome:"borilson"}]
+        
+       /* minhaprop = "nome";
+        meuobj[minhaprop]="adilson";
+        console.log(`meu obj ${JSON.stringify(meuobj)}`);
+*/
+        arraypai=[];
+        meunomearray1 = "gatos";
+        meunomearray2 = "patos"
+        arraypai[meunomearray1]=[];
+        arraypai[meunomearray2]=[];
+
+        console.log(JSON.stringify(arraypai.length));
+
+        console.log("=============");
+        /*
+        animaisfinal=[];
+        animaisSeparados2 = animais.reduce((ac,bichoatual)=>{
+            console.log(bichoatual.tipo)
+            animaisfinal[bichoatual.tipo] =[{aaa:"bbb"}];
+        //     if(!animaisfinal[bichoatual.tipo])
+        //     {
+        //         animaisfinal[bichoatual.tipo] =[];
+                
+               
+        //   }
+            animaisfinal[bichoatual.tipo].push({nome:bichoatual.nome,idade:bichoatual.idade});
+            console.log("65sss"+JSON.stringify(animaisfinal));
+            return ac;
+
+        },[]);
+        console.log("====assss=========");
+        console.log(JSON.stringify(animaisfinal));
+
+
+
+      /*
+        Object.defineProperty(object1, bichoatual.tipo,{writable:true,value:"ssssss"});
+        [ meunomearray] = ["borilson"];
+        meusarrays.push(meunomearray);
+        console.log("meusarrays "+ meusarrays);
+
+        console.log("=============");
+
+       
+        /*
+        animaisSeparados = animais.reduce((ac,bichoatual,indice)=>{
+            if(ac[bichoatual.tipo]) 
+                console.log(bichoatual.tipo + " existe");
+            else 
+            console.log(bichoatual.tipo + "não existe");      
+            console.log("ba "+bichoatual.tipo+ " ind "+indice);
+            //ac[bichoatual.tipo].push(bichoatual);
+            return ac;
+
+         },{cao:[],gato:[]});
+        /*
         animaisSeparados = animais.reduce((ac,bichoatual,indice)=>{
             if(!ac[bichoatual.tipo]){
-                Object.defineProperty(object1, bichoatual.tipo,{value:"ssssss"});
+                Object.defineProperty(object1, bichoatual.tipo,{writable:true,value:"ssssss"});
                 ac.push(object1);
                 console.log("ba" + JSON.stringify(bichoatual.tipo));
                console.log("ac" + JSON.stringify(ac));
@@ -47,7 +110,11 @@ animais = [
             return ac;
 
          },[]);
-        
+
+         /*
+        console.log("=======");
+        console.log(JSON.stringify(animaisSeparados));
+        console.log("=======");
 
         console.log("gatos"+JSON.stringify(animaisSeparados.gato));
         console.log("caos"+ JSON.stringify(animaisSeparados.cao));
@@ -60,6 +127,7 @@ animais = [
         // });
         // object1.property1;
         // console.log(object1.property1);  
+        */
     </script>
 </head>
 

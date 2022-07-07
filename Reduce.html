@@ -9,7 +9,7 @@
         var numeros = [7, 8, 9, 10, 11, 12, 13];
         var total = numeros.reduce((acumulador, numero, indice, original) => {
             // A
-            console.info(`${acumulador} total até o momento`);
+            console.log(`${acumulador} total até o momento`);
             console.log(`${numero} valor atual`);
             // numero (segundo parâmetro) é o valor atual do array numeros( começa com 7)
             console.log(`${indice} indice atual`);
@@ -44,7 +44,7 @@
             {
                 nome: 'Tobby',
                 idade: 6,
-                tipo: 'cao'
+                tipo: 'pato'
             },
             {
                 nome: 'Laminha',
@@ -69,9 +69,12 @@
         // console.log("bicho"+ JSON.stringify( cao));
         ac = {}
         animaisSeparados = animais.reduce((ac,bichoatual,indice)=>{
-            if(ac[bichoatual.tipo]) console.log("existe");
+            if(ac[bichoatual.tipo]) 
+                console.log(bichoatual.tipo + " existe");
+            else 
+            console.log(bichoatual.tipo + "não existe");      
             console.log("ba "+bichoatual.tipo+ " ind "+indice);
-            ac[bichoatual.tipo].push(bichoatual);
+            //ac[bichoatual.tipo].push(bichoatual);
             return ac;
 
          },{cao:[],gato:[]});
